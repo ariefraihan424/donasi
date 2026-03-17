@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Azmi & Rizky · Wedding Undangan</title>
+    <title>Azmi & Rizky · Wedding Undangan (16:9)</title>
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -24,16 +24,19 @@
             display: flex;
             justify-content: center;
             align-items: center;
+            padding: 20px;
         }
         
+        /* Rasio 16:9 - lebar 800px, tinggi 450px (16:9) */
         .invitation-wrapper {
             position: relative;
             width: 100%;
-            max-width: 600px;
+            max-width: 800px;
+            aspect-ratio: 16 / 9;
             margin: 0 auto;
             background-color: #fcf7f0;
             box-shadow: 0 20px 40px rgba(0,0,0,0.3);
-            border-radius: 32px;
+            border-radius: 24px;
             overflow: hidden;
         }
         
@@ -63,28 +66,30 @@
             position: relative;
             z-index: 2;
             width: 100%;
-            min-height: 100vh;
+            height: 100%;
             display: flex;
             flex-direction: column;
+            overflow-y: auto;
+            padding: 15px 20px;
         }
         
         /* Tombol navigasi */
         .nav-button {
             position: absolute;
-            top: 20px;
-            right: 20px;
+            top: 12px;
+            right: 15px;
             background: rgba(255, 255, 255, 0.3);
             backdrop-filter: blur(5px);
             border: 1px solid rgba(215, 185, 140, 0.5);
-            border-radius: 40px;
-            padding: 0.5rem 1.2rem;
+            border-radius: 30px;
+            padding: 0.4rem 1rem;
             color: #6b4f2b;
             cursor: pointer;
-            font-size: 0.9rem;
+            font-size: 0.8rem;
             z-index: 20;
             display: none;
             align-items: center;
-            gap: 8px;
+            gap: 6px;
         }
         
         .nav-button.active {
@@ -92,27 +97,27 @@
         }
         
         .back-to-cover {
-            left: 20px;
+            left: 15px;
             right: auto;
         }
         
         /* Tombol musik */
         .music-control {
             position: absolute;
-            bottom: 20px;
-            left: 20px;
+            bottom: 15px;
+            left: 15px;
             background: rgba(255, 255, 255, 0.3);
             backdrop-filter: blur(5px);
             border: 1px solid rgba(215, 185, 140, 0.5);
-            border-radius: 40px;
-            padding: 0.5rem 1rem;
+            border-radius: 30px;
+            padding: 0.4rem 0.9rem;
             color: #6b4f2b;
             cursor: pointer;
-            font-size: 0.9rem;
+            font-size: 0.8rem;
             z-index: 20;
             display: flex;
             align-items: center;
-            gap: 8px;
+            gap: 6px;
             transition: 0.2s;
         }
         
@@ -128,12 +133,12 @@
         /* ===== HALAMAN COVER ===== */
         .cover-page {
             width: 100%;
-            min-height: 100vh;
+            height: 100%;
             display: flex;
             flex-direction: column;
             justify-content: flex-end;
             align-items: center;
-            padding: 2rem 1.5rem 4rem;
+            padding: 1rem 1rem 2rem;
             position: relative;
             z-index: 5;
         }
@@ -142,36 +147,36 @@
             background: rgba(255, 250, 240, 0.85);
             backdrop-filter: blur(12px);
             border: 1px solid rgba(215, 185, 140, 0.7);
-            border-radius: 48px 48px 32px 32px;
-            padding: 1.8rem 1.5rem 2rem;
+            border-radius: 32px 32px 24px 24px;
+            padding: 1.2rem 1.2rem 1.5rem;
             width: 100%;
-            max-width: 450px;
-            box-shadow: 0 20px 40px -10px rgba(0,0,0,0.2);
-            margin-bottom: 2rem;
+            max-width: 380px;
+            box-shadow: 0 15px 30px -10px rgba(0,0,0,0.2);
+            margin-bottom: 1.5rem;
         }
         
         .field {
-            margin-bottom: 1.2rem;
+            margin-bottom: 0.8rem;
         }
         
         .field label {
             display: block;
-            font-size: 0.75rem;
-            letter-spacing: 2px;
+            font-size: 0.65rem;
+            letter-spacing: 1.5px;
             text-transform: uppercase;
             color: #6b4f2b;
-            margin-bottom: 0.3rem;
+            margin-bottom: 0.2rem;
             font-weight: 500;
-            margin-left: 1.2rem;
+            margin-left: 1rem;
         }
         
         .field input {
             width: 100%;
-            padding: 1rem 1.5rem;
+            padding: 0.7rem 1.2rem;
             background: rgba(255, 250, 240, 0.95);
             border: 1px solid #e3d1b5;
-            border-radius: 60px;
-            font-size: 1rem;
+            border-radius: 40px;
+            font-size: 0.85rem;
             color: #3f2f18;
             outline: none;
             transition: 0.2s;
@@ -186,18 +191,18 @@
         .btn-open {
             background: linear-gradient(145deg, #b48c54, #9e6f3d);
             border: none;
-            padding: 1rem 1.8rem;
-            border-radius: 60px;
+            padding: 0.7rem 1.4rem;
+            border-radius: 40px;
             width: 100%;
-            font-size: 1.3rem;
+            font-size: 1rem;
             font-weight: 600;
-            letter-spacing: 2px;
+            letter-spacing: 1.5px;
             color: #fef7e9;
-            text-shadow: 0 2px 3px #5f3e1f;
-            box-shadow: 0 15px 20px -10px #805d37, 0 2px 0 #624a2b inset;
+            text-shadow: 0 1px 2px #5f3e1f;
+            box-shadow: 0 10px 15px -8px #805d37, 0 1px 0 #624a2b inset;
             cursor: pointer;
             transition: 0.15s;
-            margin-top: 0.5rem;
+            margin-top: 0.3rem;
             border: 1px solid #e9c998;
             text-transform: uppercase;
             font-family: 'Playfair Display', serif;
@@ -211,14 +216,14 @@
         .ornament-line {
             display: flex;
             justify-content: center;
-            gap: 10px;
-            margin: 5px 0 8px;
+            gap: 8px;
+            margin: 3px 0 5px;
             opacity: 0.7;
         }
         
         .ornament-line span {
             display: inline-block;
-            width: 30px;
+            width: 25px;
             height: 1px;
             background: linear-gradient(90deg, transparent, #cbad7a, transparent);
         }
@@ -226,13 +231,14 @@
         /* ===== HALAMAN UTAMA (1, 2, dan 3) ===== */
         .main-page {
             width: 100%;
-            min-height: 100vh;
+            height: 100%;
             display: none;
             flex-direction: column;
-            padding: 2.5rem 1.8rem 1rem;
+            padding: 1.5rem 1.5rem 0.5rem;
             position: relative;
             z-index: 5;
             background: transparent;
+            overflow-y: auto;
         }
         
         .main-page.active {
@@ -241,155 +247,178 @@
         
         .page {
             width: 100%;
+            flex: 1;
         }
         
         .page-one, .page-two, .page-three {
             width: 100%;
+            height: 100%;
         }
         
         .page-two {
-            margin-top: 2rem;
-            padding-top: 2rem;
-            border-top: 2px dashed #d4b68a;
+            margin-top: 1rem;
+            padding-top: 1rem;
+            border-top: 1.5px dashed #d4b68a;
         }
         
         .page-three {
-            margin-top: 2rem;
-            padding-top: 2rem;
-            border-top: 2px dashed #d4b68a;
+            margin-top: 1rem;
+            padding-top: 1rem;
+            border-top: 1.5px dashed #d4b68a;
         }
         
         /* Layout buku untuk halaman 3 */
         .book-layout {
             display: flex;
-            gap: 20px;
+            gap: 15px;
             width: 100%;
+            height: calc(100% - 40px);
         }
         
         .book-left, .book-right {
             flex: 1;
             min-width: 0;
+            overflow-y: auto;
+            max-height: 100%;
+            padding-right: 5px;
         }
         
         .book-left {
-            border-right: 2px dashed #d4b68a;
-            padding-right: 15px;
+            border-right: 1.5px dashed #d4b68a;
+            padding-right: 12px;
         }
         
         .book-right {
-            padding-left: 15px;
+            padding-left: 12px;
+        }
+        
+        /* Scrollbar styling */
+        .book-left::-webkit-scrollbar, .book-right::-webkit-scrollbar {
+            width: 4px;
+        }
+        
+        .book-left::-webkit-scrollbar-track, .book-right::-webkit-scrollbar-track {
+            background: rgba(215, 185, 140, 0.2);
+            border-radius: 10px;
+        }
+        
+        .book-left::-webkit-scrollbar-thumb, .book-right::-webkit-scrollbar-thumb {
+            background: #b48c54;
+            border-radius: 10px;
         }
         
         .guest-greeting {
             background: rgba(255, 250, 240, 0.7);
-            border-radius: 60px;
-            padding: 0.8rem 1.5rem;
-            margin-bottom: 1.5rem;
+            border-radius: 40px;
+            padding: 0.5rem 1rem;
+            margin-bottom: 1rem;
             text-align: center;
             backdrop-filter: blur(4px);
             border: 1px solid #e3d1b5;
-            font-size: 1.1rem;
+            font-size: 0.9rem;
             color: #6b4f2b;
         }
         
         .guest-greeting i {
             color: #b48c54;
-            margin-right: 8px;
+            margin-right: 6px;
         }
         
         .section-title {
             text-align: center;
             font-family: 'Great Vibes', cursive;
-            font-size: 2.8rem;
+            font-size: 2.2rem;
             color: #b48c54;
-            margin-bottom: 0.5rem;
+            margin-bottom: 0.3rem;
             font-weight: 400;
             text-shadow: 1px 1px 0 #ffe5c8;
         }
         
         .bismillah {
             text-align: center;
-            font-size: 1.8rem;
+            font-size: 1.4rem;
             font-family: 'Great Vibes', cursive;
             color: #9e7f5a;
-            margin: 1rem 0;
+            margin: 0.7rem 0;
         }
         
         .invitation-text {
             text-align: center;
-            margin: 1.5rem 0;
-            line-height: 1.8;
+            margin: 1rem 0;
+            line-height: 1.5;
             color: #3f2f18;
             background: rgba(255,250,240,0.6);
-            padding: 1.5rem;
-            border-radius: 30px;
+            padding: 1rem;
+            border-radius: 20px;
             backdrop-filter: blur(4px);
+            font-size: 0.85rem;
         }
         
         .couple-names {
             text-align: center;
-            font-size: 2.2rem;
+            font-size: 1.8rem;
             font-family: 'Playfair Display', serif;
             font-weight: 700;
             color: #3f2f18;
-            margin: 1rem 0;
+            margin: 0.7rem 0;
         }
         
         .couple-names span {
             display: inline-block;
             background: rgba(238, 220, 200, 0.7);
-            padding: 0.2rem 1.5rem;
-            border-radius: 60px;
-            font-size: 1.4rem;
+            padding: 0.1rem 1rem;
+            border-radius: 40px;
+            font-size: 1.1rem;
             color: #7a5a34;
             font-family: 'Great Vibes', cursive;
-            margin: 0 0.5rem;
+            margin: 0 0.3rem;
         }
         
         .parents-name {
             text-align: center;
             font-style: italic;
             color: #7a6234;
-            margin-bottom: 2rem;
-            font-size: 0.95rem;
+            margin-bottom: 1.5rem;
+            font-size: 0.8rem;
         }
         
         .event-card {
             background: rgba(255, 250, 240, 0.6);
             backdrop-filter: blur(4px);
-            border-radius: 30px;
-            padding: 1.5rem;
-            margin: 1.5rem 0;
+            border-radius: 20px;
+            padding: 1rem;
+            margin: 1rem 0;
             border: 1px solid #ebd6bc;
         }
         
         .event-title {
             font-family: 'Playfair Display', serif;
-            font-size: 1.5rem;
+            font-size: 1.2rem;
             color: #9e6f3d;
-            margin-bottom: 1rem;
+            margin-bottom: 0.7rem;
             text-align: center;
             border-bottom: 1px solid #d4b68a;
-            padding-bottom: 0.5rem;
+            padding-bottom: 0.3rem;
         }
         
         .event-detail {
             display: flex;
             align-items: flex-start;
-            gap: 15px;
-            margin-bottom: 1.2rem;
+            gap: 10px;
+            margin-bottom: 0.8rem;
+            font-size: 0.85rem;
         }
         
         .event-detail i {
             color: #b48c54;
-            width: 25px;
-            font-size: 1.2rem;
-            margin-top: 3px;
+            width: 20px;
+            font-size: 1rem;
+            margin-top: 2px;
         }
         
         .event-detail p {
             color: #3a2e1e;
-            line-height: 1.6;
+            line-height: 1.4;
         }
         
         .event-detail strong {
@@ -400,17 +429,17 @@
         /* Tombol navigasi antar halaman */
         .nav-buttons-container {
             display: flex;
-            gap: 15px;
-            margin: 1.5rem 0;
+            gap: 10px;
+            margin: 1rem 0 0.5rem;
         }
         
         .nav-page-btn {
             flex: 1;
             background: linear-gradient(145deg, #b48c54, #9e6f3d);
             border: none;
-            padding: 1rem;
-            border-radius: 60px;
-            font-size: 1.1rem;
+            padding: 0.6rem;
+            border-radius: 40px;
+            font-size: 0.9rem;
             font-weight: 600;
             color: #fef7e9;
             text-shadow: 0 1px 2px #5f3e1f;
@@ -419,7 +448,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 10px;
+            gap: 6px;
             border: 1px solid #e9c998;
         }
         
@@ -437,13 +466,13 @@
         .page-indicator {
             display: flex;
             justify-content: center;
-            gap: 10px;
-            margin: 1rem 0;
+            gap: 8px;
+            margin: 0.5rem 0;
         }
         
         .page-dot {
-            width: 10px;
-            height: 10px;
+            width: 8px;
+            height: 8px;
             border-radius: 50%;
             background: #d4b68a;
             cursor: pointer;
@@ -458,16 +487,16 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            margin-top: 1rem;
-            margin-bottom: 1rem;
-            padding: 0.5rem;
+            margin-top: 0.5rem;
+            margin-bottom: 0.5rem;
+            padding: 0.3rem;
             cursor: pointer;
         }
         
         .designer-logo img {
             width: auto;
-            height: 40px;
-            max-width: 120px;
+            height: 30px;
+            max-width: 100px;
             object-fit: contain;
             opacity: 0.8;
             transition: opacity 0.2s;
@@ -480,10 +509,10 @@
         .footer-note {
             text-align: center;
             color: #ab8e62;
-            font-size: 0.8rem;
-            margin-top: 1rem;
+            font-size: 0.65rem;
+            margin-top: 0.5rem;
             border-top: 1px dashed #dcc9ae;
-            padding-top: 1.5rem;
+            padding-top: 0.8rem;
         }
 
         .download-overlay {
@@ -502,32 +531,65 @@
         
         .loading-spinner {
             background: white;
-            padding: 2rem;
-            border-radius: 20px;
+            padding: 1.5rem;
+            border-radius: 16px;
             text-align: center;
         }
         
         .loading-spinner i {
-            font-size: 3rem;
+            font-size: 2.5rem;
             color: #b48c54;
-            margin-bottom: 1rem;
+            margin-bottom: 0.8rem;
+        }
+        
+        .loading-spinner h3 {
+            font-size: 1rem;
+            margin-bottom: 0.3rem;
+        }
+        
+        .loading-spinner p {
+            font-size: 0.8rem;
         }
 
         .download-indicator {
             text-align: center;
-            font-size: 0.9rem;
+            font-size: 0.75rem;
             color: #9e6f3d;
-            margin-top: 0.5rem;
+            margin-top: 0.3rem;
         }
         
         .download-indicator i {
-            margin-right: 5px;
+            margin-right: 4px;
+        }
+        
+        /* Responsif untuk layar kecil */
+        @media (max-width: 600px) {
+            body {
+                padding: 10px;
+            }
+            
+            .invitation-wrapper {
+                max-width: 100%;
+                aspect-ratio: 16 / 9;
+            }
+            
+            .section-title {
+                font-size: 1.8rem;
+            }
+            
+            .couple-names {
+                font-size: 1.5rem;
+            }
+            
+            .book-left .section-title, .book-right .section-title {
+                font-size: 1.6rem;
+            }
         }
     </style>
 </head>
 <body>
-    <!-- Audio element with autoplay and muted=false to ensure playback -->
-    <audio id="bgMusic" loop>
+    <!-- Audio element with autoplay -->
+    <audio id="bgMusic" loop autoplay preload="auto">
         <source src="song.mp3" type="audio/mpeg">
         Your browser does not support the audio element.
     </audio>
@@ -536,20 +598,20 @@
         <!-- Background COVER -->
         <div class="cover-background" id="coverBg">
             <img src="azmi.png" alt="Cover background" 
-                 onerror="this.onerror=null; this.src='data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 600 800\'%3E%3Cdefs%3E%3ClinearGradient id=\'g\' x1=\'0%25\' y1=\'0%25\' x2=\'100%25\' y2=\'100%25\'%3E%3Cstop offset=\'0%25\' stop-color=\'%23f9e9cf\'/%3E%3Cstop offset=\'100%25\' stop-color=\'%23eddbbd\'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width=\'600\' height=\'800\' fill=\'url(%23g)\'/%3E%3Ctext x=\'220\' y=\'400\' font-family=\'Playfair Display\' font-size=\'90\' fill=\'%237a5b3a\'%3ER%3C/text%3E%3Ctext x=\'320\' y=\'400\' font-family=\'Playfair Display\' font-size=\'90\' fill=\'%237a5b3a\'%3EA%3C/text%3E%3C/svg%3E';">
+                 onerror="this.onerror=null; this.src='data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 800 450\'%3E%3Cdefs%3E%3ClinearGradient id=\'g\' x1=\'0%25\' y1=\'0%25\' x2=\'100%25\' y2=\'100%25\'%3E%3Cstop offset=\'0%25\' stop-color=\'%23f9e9cf\'/%3E%3Cstop offset=\'100%25\' stop-color=\'%23eddbbd\'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width=\'800\' height=\'450\' fill=\'url(%23g)\'/%3E%3Ctext x=\'320\' y=\'220\' font-family=\'Playfair Display\' font-size=\'70\' fill=\'%237a5b3a\'%3EA%26R%3C/text%3E%3C/svg%3E';">
         </div>
         
         <!-- Background HALAMAN UTAMA -->
         <div class="main-background" id="mainBg">
             <img src="utama.png" alt="Main background" 
-                 onerror="this.onerror=null; this.src='data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 600 800\'%3E%3Cdefs%3E%3ClinearGradient id=\'g2\' x1=\'0%25\' y1=\'0%25\' x2=\'100%25\' y2=\'100%25\'%3E%3Cstop offset=\'0%25\' stop-color=\'%23f5e6d3\'/%3E%3Cstop offset=\'100%25\' stop-color=\'%23e8d5bc\'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width=\'600\' height=\'800\' fill=\'url(%23g2)\'/%3E%3Cpath d=\'M150,200 L450,200' stroke='%23b48c54' stroke-width='2' stroke-dasharray='10 10'/%3E%3Ctext x=\'250\' y=\'300\' font-family=\'Great Vibes\' font-size=\'60\' fill=\'%239e6f3d\'%3EWedding%3C/text%3E%3C/svg%3E';">
+                 onerror="this.onerror=null; this.src='data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 800 450\'%3E%3Cdefs%3E%3ClinearGradient id=\'g2\' x1=\'0%25\' y1=\'0%25\' x2=\'100%25\' y2=\'100%25\'%3E%3Cstop offset=\'0%25\' stop-color=\'%23f5e6d3\'/%3E%3Cstop offset=\'100%25\' stop-color=\'%23e8d5bc\'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width=\'800\' height=\'450\' fill=\'url(%23g2)\'/%3E%3Cpath d=\'M200,150 L600,150' stroke='%23b48c54' stroke-width='2' stroke-dasharray='10 10'/%3E%3Ctext x=\'330\' y=\'230\' font-family=\'Great Vibes\' font-size=\'50\' fill=\'%239e6f3d\'%3EWedding%3C/text%3E%3C/svg%3E';">
         </div>
         
         <!-- Konten -->
         <div class="content-layer">
             <!-- Tombol navigasi -->
             <div class="nav-button back-to-cover" id="backToCoverBtn">
-                <i class="fas fa-arrow-left"></i> Kembali ke Cover
+                <i class="fas fa-arrow-left"></i> Kembali
             </div>
             
             <!-- Tombol kontrol musik -->
@@ -569,14 +631,14 @@
                         <input type="text" id="alamat" placeholder="Masukkan alamat Anda" value="">
                     </div>
                     <div class="ornament-line">
-                        <span></span><span style="width: 60px;"></span><span></span>
+                        <span></span><span style="width: 40px;"></span><span></span>
                     </div>
                     <button class="btn-open" id="bukaUndanganBtn">
-                        <i class="fas fa-envelope-open"></i> Buka Undangan
+                        <i class="fas fa-envelope-open"></i> Buka
                     </button>
                 </div>
-                <div style="color: #fff; text-shadow: 0 2px 4px rgba(0,0,0,0.3);">
-                    <i class="fas fa-chevron-down"></i> Masukkan data untuk membuka
+                <div style="color: #fff; text-shadow: 0 2px 4px rgba(0,0,0,0.3); font-size: 0.8rem;">
+                    <i class="fas fa-chevron-down"></i> Masukkan data
                 </div>
             </div>
             
@@ -593,7 +655,7 @@
                 </div>
                 
                 <!-- Container 3 halaman -->
-                <div id="pageContainer">
+                <div id="pageContainer" style="flex: 1; overflow-y: auto;">
                     <!-- HALAMAN 1 -->
                     <div id="pageOne" class="page page-one">
                         <div class="bismillah">بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ</div>
@@ -607,202 +669,191 @@
                         
                         <div class="invitation-text">
                             Dengan memohon rahmat dan ridho Allah SWT, kami bermaksud menyelenggarakan akad nikah dan resepsi pernikahan putra-putri kami. <br><br>
-                            <strong>Kepada Yth. Bapak/Ibu/Saudara/i</strong><br>
-                            <span style="font-size: 1.3rem; color: #9e6f3d;" id="invitedGuestName">Azmi Putra</span><br>
-                            di tempat
+                            <strong>Kepada Yth.</strong><br>
+                            <span style="font-size: 1.1rem; color: #9e6f3d;" id="invitedGuestName">Azmi Putra</span>
                         </div>
                         
                         <div class="event-card">
                             <div class="event-title">Akad Nikah</div>
                             <div class="event-detail">
                                 <i class="fas fa-map-marker-alt"></i>
-                                <p><strong>Kedungwaru, Prembun</strong><br>Jl. Masjid No. 7, Kedungwaru</p>
+                                <p><strong>Kedungwaru, Prembun</strong><br>Jl. Masjid No. 7</p>
                             </div>
                             <div class="event-detail">
                                 <i class="fas fa-clock"></i>
-                                <p><strong>Pukul 07.00 WIB</strong><br>Jumat, 17 Maret 2026</p>
+                                <p><strong>07.00 WIB</strong><br>Jumat, 17 Maret 2026</p>
                             </div>
                         </div>
                         
                         <div class="event-card">
-                            <div class="event-title">Resepsi Pernikahan</div>
+                            <div class="event-title">Resepsi</div>
                             <div class="event-detail">
                                 <i class="fas fa-map-marker-alt"></i>
-                                <p><strong>Pejagatan, Kutowinangun</strong><br>Jl. Raya Selatan No. 45, Pejagatan</p>
+                                <p><strong>Pejagatan, Kutowinangun</strong><br>Jl. Raya Selatan No. 45</p>
                             </div>
                             <div class="event-detail">
                                 <i class="fas fa-clock"></i>
-                                <p><strong>Pukul 13.00 WIB - selesai</strong><br>Sabtu, 18 Maret 2026</p>
+                                <p><strong>13.00 WIB</strong><br>Sabtu, 18 Maret 2026</p>
                             </div>
-                        </div>
-                        
-                        <div class="location" style="background: rgba(215, 185, 140, 0.2); padding: 1rem; border-radius: 20px;">
-                            <i class="fas fa-info-circle"></i> Acara ijab dilaksanakan di Kedungwaru, resepsi keesokan harinya di Pejagatan.
                         </div>
                         
                         <!-- Tombol navigasi ke halaman 2 -->
                         <div class="nav-buttons-container">
                             <button class="nav-page-btn" id="goToPage2Btn">
-                                <i class="fas fa-arrow-right"></i> Lanjut ke Halaman 2
+                                <i class="fas fa-arrow-right"></i> Halaman 2
                             </button>
                         </div>
                     </div>
                     
                     <!-- HALAMAN 2 -->
                     <div id="pageTwo" class="page page-two" style="display: none;">
-                        <div class="section-title">Azmi & Rizky</div>
+                        <div class="section-title" style="font-size: 2rem;">Azmi & Rizky</div>
                         
                         <div class="event-card">
                             <div class="event-title">Profil Mempelai</div>
-                            <div style="display: flex; flex-direction: column; gap: 1.2rem;">
+                            <div style="display: flex; flex-direction: column; gap: 0.8rem; font-size: 0.85rem;">
                                 <div>
-                                    <i class="fas fa-male" style="color: #9e6f3d; width: 25px;"></i>
-                                    <strong style="font-size: 1.2rem;">Azmi Ahmad</strong><br>
-                                    Putra pertama dari Bpk. Ahmad & Ibu Siti<br>
+                                    <i class="fas fa-male" style="color: #9e6f3d;"></i>
+                                    <strong>Azmi Ahmad</strong><br>
+                                    Putra pertama Bpk. Ahmad & Ibu Siti<br>
                                     <span style="color: #7a5a34;">Kedungwaru, Prembun</span>
                                 </div>
                                 <div>
-                                    <i class="fas fa-female" style="color: #9e6f3d; width: 25px;"></i>
-                                    <strong style="font-size: 1.2rem;">Rizky Budi</strong><br>
-                                    Putri pertama dari Bpk. Budi & Ibu Dewi<br>
+                                    <i class="fas fa-female" style="color: #9e6f3d;"></i>
+                                    <strong>Rizky Budi</strong><br>
+                                    Putri pertama Bpk. Budi & Ibu Dewi<br>
                                     <span style="color: #7a5a34;">Pejagatan, Kutowinangun</span>
                                 </div>
                             </div>
                         </div>
                         
                         <div class="event-card">
-                            <div class="event-title">Rundown Acara</div>
+                            <div class="event-title">Rundown</div>
                             
-                            <div style="margin-bottom: 1.5rem;">
-                                <h3 style="color: #9e6f3d; border-bottom: 1px solid #d4b68a; padding-bottom: 0.3rem;">📍 Ijab (Kedungwaru)</h3>
-                                <div class="event-detail"><i class="fas fa-clock"></i> <p>06.30 - 07.00 : Persiapan akad</p></div>
-                                <div class="event-detail"><i class="fas fa-clock"></i> <p>07.00 - 08.00 : Prosesi ijab qabul</p></div>
-                                <div class="event-detail"><i class="fas fa-clock"></i> <p>08.00 - 09.00 : Sungkeman & doa</p></div>
+                            <div style="margin-bottom: 0.8rem;">
+                                <h3 style="color: #9e6f3d; font-size: 0.9rem;">📍 Ijab (Kedungwaru)</h3>
+                                <div class="event-detail" style="font-size: 0.75rem;"><i class="fas fa-clock"></i> <p>06.30-07.00: Persiapan</p></div>
+                                <div class="event-detail" style="font-size: 0.75rem;"><i class="fas fa-clock"></i> <p>07.00-08.00: Ijab qabul</p></div>
+                                <div class="event-detail" style="font-size: 0.75rem;"><i class="fas fa-clock"></i> <p>08.00-09.00: Sungkeman</p></div>
                             </div>
                             
                             <div>
-                                <h3 style="color: #9e6f3d; border-bottom: 1px solid #d4b68a; padding-bottom: 0.3rem;">📍 Resepsi (Pejagatan)</h3>
-                                <div class="event-detail"><i class="fas fa-clock"></i> <p>12.00 - 13.00 : Kedatangan tamu</p></div>
-                                <div class="event-detail"><i class="fas fa-clock"></i> <p>13.00 - 14.00 : Prosesi resepsi</p></div>
-                                <div class="event-detail"><i class="fas fa-clock"></i> <p>14.00 - 16.00 : Hiburan & ramah tamah</p></div>
+                                <h3 style="color: #9e6f3d; font-size: 0.9rem;">📍 Resepsi (Pejagatan)</h3>
+                                <div class="event-detail" style="font-size: 0.75rem;"><i class="fas fa-clock"></i> <p>12.00-13.00: Kedatangan tamu</p></div>
+                                <div class="event-detail" style="font-size: 0.75rem;"><i class="fas fa-clock"></i> <p>13.00-14.00: Prosesi</p></div>
+                                <div class="event-detail" style="font-size: 0.75rem;"><i class="fas fa-clock"></i> <p>14.00-16.00: Hiburan</p></div>
                             </div>
                         </div>
                         
-                        <div class="event-card" style="background: rgba(215, 185, 140, 0.2); text-align: center;">
-                            <i class="fas fa-heart" style="color: #b48c54; font-size: 1.5rem;"></i><br>
-                            Merupakan suatu kehormatan apabila Bapak/Ibu/Saudara/i berkenan hadir.
-                        </div>
-                        
-                        <!-- Tombol navigasi ke halaman 3 dan kembali ke halaman 1 -->
+                        <!-- Tombol navigasi -->
                         <div class="nav-buttons-container">
                             <button class="nav-page-btn" id="backToPage1Btn">
                                 <i class="fas fa-arrow-left"></i> Kembali
                             </button>
                             <button class="nav-page-btn" id="goToPage3Btn">
-                                <i class="fas fa-arrow-right"></i> Lanjut ke Halaman 3
+                                <i class="fas fa-arrow-right"></i> Halaman 3
                             </button>
                         </div>
                     </div>
                     
                     <!-- HALAMAN 3 - Tampilan Buku -->
-                    <div id="pageThree" class="page page-three" style="display: none;">
+                    <div id="pageThree" class="page page-three" style="display: none; height: calc(100% - 20px);">
+                        <div class="guest-greeting" style="margin-bottom: 0.5rem;">
+                            <i class="fas fa-user-check"></i> <span id="guestNameDisplay3">Azmi Putra</span> · <span id="guestCityDisplay3">Jakarta</span>
+                        </div>
+                        
                         <div class="book-layout">
                             <!-- Halaman 1 (Kiri) -->
                             <div class="book-left">
-                                <div class="bismillah" style="font-size: 1.5rem;">بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ</div>
-                                <div class="section-title" style="font-size: 2rem;">The Wedding of</div>
-                                <div class="couple-names" style="font-size: 1.6rem;">
-                                    Azmi <span style="font-size: 1.1rem;">&</span> Rizky
+                                <div class="bismillah" style="font-size: 1.2rem;">بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ</div>
+                                <div class="section-title" style="font-size: 1.6rem;">The Wedding of</div>
+                                <div class="couple-names" style="font-size: 1.3rem;">
+                                    Azmi <span style="font-size: 0.9rem;">&</span> Rizky
                                 </div>
-                                <div class="parents-name" style="font-size: 0.8rem;">
-                                    Putra dari Bpk. Ahmad & Ibu Siti · Putri dari Bpk. Budi & Ibu Dewi
+                                <div class="parents-name" style="font-size: 0.65rem;">
+                                    Putra Bpk. Ahmad & Ibu Siti · Putri Bpk. Budi & Ibu Dewi
                                 </div>
                                 
-                                <div class="invitation-text" style="padding: 0.8rem; font-size: 0.9rem;">
-                                    Dengan memohon rahmat dan ridho Allah SWT, kami bermaksud menyelenggarakan akad nikah dan resepsi pernikahan putra-putri kami. <br><br>
+                                <div class="invitation-text" style="padding: 0.6rem; font-size: 0.75rem;">
+                                    Dengan memohon rahmat Allah, kami bermaksud mengadakan akad nikah dan resepsi. <br>
                                     <strong>Kepada Yth.</strong><br>
-                                    <span style="font-size: 1rem; color: #9e6f3d;" id="invitedGuestName3">Azmi Putra</span><br>
-                                    di tempat
+                                    <span style="font-size: 0.85rem; color: #9e6f3d;" id="invitedGuestName3">Azmi Putra</span>
                                 </div>
                                 
-                                <div class="event-card" style="padding: 0.8rem;">
-                                    <div class="event-title" style="font-size: 1.2rem;">Akad Nikah</div>
-                                    <div class="event-detail" style="gap: 8px; font-size: 0.9rem;">
+                                <div class="event-card" style="padding: 0.6rem;">
+                                    <div class="event-title" style="font-size: 1rem;">Akad Nikah</div>
+                                    <div class="event-detail" style="gap: 5px; font-size: 0.7rem;">
                                         <i class="fas fa-map-marker-alt"></i>
                                         <p><strong>Kedungwaru, Prembun</strong><br>Jl. Masjid No. 7</p>
                                     </div>
-                                    <div class="event-detail" style="gap: 8px; font-size: 0.9rem;">
+                                    <div class="event-detail" style="gap: 5px; font-size: 0.7rem;">
                                         <i class="fas fa-clock"></i>
-                                        <p><strong>07.00 WIB</strong><br>Jumat, 17 Maret 2026</p>
+                                        <p><strong>07.00 WIB</strong><br>17 Maret 2026</p>
                                     </div>
                                 </div>
                                 
-                                <div class="event-card" style="padding: 0.8rem;">
-                                    <div class="event-title" style="font-size: 1.2rem;">Resepsi</div>
-                                    <div class="event-detail" style="gap: 8px; font-size: 0.9rem;">
+                                <div class="event-card" style="padding: 0.6rem;">
+                                    <div class="event-title" style="font-size: 1rem;">Resepsi</div>
+                                    <div class="event-detail" style="gap: 5px; font-size: 0.7rem;">
                                         <i class="fas fa-map-marker-alt"></i>
-                                        <p><strong>Pejagatan, Kutowinangun</strong><br>Jl. Raya Selatan No. 45</p>
+                                        <p><strong>Pejagatan</strong><br>Jl. Raya Selatan No. 45</p>
                                     </div>
-                                    <div class="event-detail" style="gap: 8px; font-size: 0.9rem;">
+                                    <div class="event-detail" style="gap: 5px; font-size: 0.7rem;">
                                         <i class="fas fa-clock"></i>
-                                        <p><strong>13.00 WIB</strong><br>Sabtu, 18 Maret 2026</p>
+                                        <p><strong>13.00 WIB</strong><br>18 Maret 2026</p>
                                     </div>
                                 </div>
                             </div>
                             
                             <!-- Halaman 2 (Kanan) -->
                             <div class="book-right">
-                                <div class="section-title" style="font-size: 2rem; margin-top: 0;">Azmi & Rizky</div>
+                                <div class="section-title" style="font-size: 1.6rem; margin-top: 0;">Azmi & Rizky</div>
                                 
-                                <div class="event-card" style="padding: 0.8rem;">
-                                    <div class="event-title" style="font-size: 1.2rem;">Profil Mempelai</div>
-                                    <div style="font-size: 0.85rem;">
-                                        <div style="margin-bottom: 0.8rem;">
+                                <div class="event-card" style="padding: 0.6rem;">
+                                    <div class="event-title" style="font-size: 1rem;">Profil</div>
+                                    <div style="font-size: 0.7rem;">
+                                        <div style="margin-bottom: 0.5rem;">
                                             <i class="fas fa-male" style="color: #9e6f3d;"></i>
                                             <strong>Azmi Ahmad</strong><br>
-                                            Putra pertama Bpk. Ahmad & Ibu Siti<br>
-                                            <span style="color: #7a5a34;">Kedungwaru, Prembun</span>
+                                            Putra pertama Bpk. Ahmad & Ibu Siti
                                         </div>
                                         <div>
                                             <i class="fas fa-female" style="color: #9e6f3d;"></i>
                                             <strong>Rizky Budi</strong><br>
-                                            Putri pertama Bpk. Budi & Ibu Dewi<br>
-                                            <span style="color: #7a5a34;">Pejagatan, Kutowinangun</span>
+                                            Putri pertama Bpk. Budi & Ibu Dewi
                                         </div>
                                     </div>
                                 </div>
                                 
-                                <div class="event-card" style="padding: 0.8rem;">
-                                    <div class="event-title" style="font-size: 1.2rem;">Rundown</div>
+                                <div class="event-card" style="padding: 0.6rem;">
+                                    <div class="event-title" style="font-size: 1rem;">Rundown</div>
                                     
-                                    <div style="margin-bottom: 0.8rem;">
-                                        <h3 style="color: #9e6f3d; font-size: 0.9rem;">📍 Ijab (Kedungwaru)</h3>
-                                        <div class="event-detail" style="gap: 5px; font-size: 0.8rem;"><i class="fas fa-clock"></i> <p>06.30-07.00: Persiapan</p></div>
-                                        <div class="event-detail" style="gap: 5px; font-size: 0.8rem;"><i class="fas fa-clock"></i> <p>07.00-08.00: Ijab qabul</p></div>
-                                        <div class="event-detail" style="gap: 5px; font-size: 0.8rem;"><i class="fas fa-clock"></i> <p>08.00-09.00: Sungkeman</p></div>
+                                    <div style="margin-bottom: 0.5rem;">
+                                        <h3 style="color: #9e6f3d; font-size: 0.75rem;">Ijab (Kedungwaru)</h3>
+                                        <div class="event-detail" style="gap: 5px; font-size: 0.65rem;"><i class="fas fa-clock"></i> <p>06.30 Persiapan</p></div>
+                                        <div class="event-detail" style="gap: 5px; font-size: 0.65rem;"><i class="fas fa-clock"></i> <p>07.00 Ijab qabul</p></div>
                                     </div>
                                     
                                     <div>
-                                        <h3 style="color: #9e6f3d; font-size: 0.9rem;">📍 Resepsi (Pejagatan)</h3>
-                                        <div class="event-detail" style="gap: 5px; font-size: 0.8rem;"><i class="fas fa-clock"></i> <p>12.00-13.00: Kedatangan tamu</p></div>
-                                        <div class="event-detail" style="gap: 5px; font-size: 0.8rem;"><i class="fas fa-clock"></i> <p>13.00-14.00: Prosesi</p></div>
-                                        <div class="event-detail" style="gap: 5px; font-size: 0.8rem;"><i class="fas fa-clock"></i> <p>14.00-16.00: Hiburan</p></div>
+                                        <h3 style="color: #9e6f3d; font-size: 0.75rem;">Resepsi (Pejagatan)</h3>
+                                        <div class="event-detail" style="gap: 5px; font-size: 0.65rem;"><i class="fas fa-clock"></i> <p>12.00 Kedatangan</p></div>
+                                        <div class="event-detail" style="gap: 5px; font-size: 0.65rem;"><i class="fas fa-clock"></i> <p>13.00 Prosesi</p></div>
                                     </div>
                                 </div>
                                 
-                                <div style="text-align: center; font-size: 0.75rem; background: rgba(215, 185, 140, 0.2); padding: 0.5rem; border-radius: 20px;">
+                                <div style="text-align: center; font-size: 0.6rem; background: rgba(215, 185, 140, 0.2); padding: 0.3rem; border-radius: 15px;">
                                     <i class="fas fa-heart" style="color: #b48c54;"></i> Mohon doa restunya
                                 </div>
                             </div>
                         </div>
                         
-                        <!-- Tombol kembali ke halaman 2 dan unduh -->
-                        <div class="nav-buttons-container">
+                        <!-- Tombol kembali dan unduh -->
+                        <div class="nav-buttons-container" style="margin-top: 0.5rem;">
                             <button class="nav-page-btn" id="backToPage2Btn">
                                 <i class="fas fa-arrow-left"></i> Kembali
                             </button>
                             <button class="nav-page-btn" id="downloadBookBtn">
-                                <i class="fas fa-download"></i> Unduh Buku
+                                <i class="fas fa-download"></i> Unduh
                             </button>
                         </div>
                     </div>
@@ -811,12 +862,12 @@
                 <!-- LOGO DESAINER -->
                 <div class="designer-logo" id="designerLogo">
                     <img src="logo.png" alt="Desainer Logo" 
-                         onerror="this.onerror=null; this.src='data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 200 80\'%3E%3Crect width=\'200\' height=\'80\' fill=\'%23f0e4d0\' rx=\'10\'/%3E%3Ctext x=\'20\' y=\'45\' font-family=\'Poppins\' font-size=\'22\' fill=\'%239e6f3d\'%3EDesain%3C/text%3E%3Ctext x=\'110\' y=\'55\' font-family=\'Great Vibes\' font-size=\'28\' fill=\'%23b48c54\'%3EAzmi%3C/text%3E%3C/svg%3E';"
+                         onerror="this.onerror=null; this.src='data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 150 40\'%3E%3Crect width=\'150\' height=\'40\' fill=\'%23f0e4d0\' rx=\'8\'/%3E%3Ctext x=\'15\' y=\'25\' font-family=\'Poppins\' font-size=\'16\' fill=\'%239e6f3d\'%3EDesain%3C/text%3E%3Ctext x=\'85\' y=\'28\' font-family=\'Great Vibes\' font-size=\'20\' fill=\'%23b48c54\'%3EAzmi%3C/text%3E%3C/svg%3E';"
                          title="Klik untuk hubungi desainer">
                 </div>
                 
                 <div class="footer-note">
-                    ✦ Wassalamu'alaikum Warahmatullahi Wabarakatuh ✦
+                    ✦ Wassalamu'alaikum ✦
                 </div>
             </div>
         </div>
@@ -827,32 +878,28 @@
     
     <script>
         (function() {
-            // Audio setup - langsung play tanpa menunggu interaksi
+            // Audio setup - auto play
             const audio = document.getElementById('bgMusic');
             const musicControl = document.getElementById('musicControl');
             const musicStatus = document.getElementById('musicStatus');
             
-            audio.volume = 0.5;
+            audio.volume = 0.4;
             
-            // Force play as soon as possible
+            // Force play
             const playPromise = audio.play();
             if (playPromise !== undefined) {
                 playPromise.then(() => {
-                    console.log('Audio started playing automatically');
                     musicStatus.textContent = 'Playing';
                     musicControl.classList.add('playing');
                 }).catch(error => {
-                    console.log('Autoplay prevented, will try again on first interaction');
-                    // Set to playing state anyway (will play on first click anywhere)
                     musicStatus.textContent = 'Ready';
                     musicControl.classList.remove('playing');
                     
-                    // Try to play on any user interaction
+                    // Try to play on first click
                     const tryPlay = () => {
                         audio.play().then(() => {
                             musicStatus.textContent = 'Playing';
                             musicControl.classList.add('playing');
-                            document.removeEventListener('click', tryPlay);
                         }).catch(e => console.log('Still blocked'));
                     };
                     document.addEventListener('click', tryPlay, { once: true });
@@ -899,7 +946,7 @@
             const pageThree = document.getElementById('pageThree');
             const pageDots = document.querySelectorAll('.page-dot');
             
-            // Tombol navigasi baru
+            // Tombol navigasi
             const goToPage2Btn = document.getElementById('goToPage2Btn');
             const backToPage1Btn = document.getElementById('backToPage1Btn');
             const goToPage3Btn = document.getElementById('goToPage3Btn');
@@ -911,7 +958,6 @@
             
             let currentMainPage = 1;
             
-            // Fungsi update semua elemen nama
             function updateNamaTamu() {
                 const nama = namaInput.value.trim() || 'Tamu Undangan';
                 const alamat = alamatInput.value.trim() || 'Indonesia';
@@ -933,7 +979,7 @@
                     <div class="loading-spinner">
                         <i class="fas fa-spinner fa-spin"></i>
                         <h3>Memproses gambar...</h3>
-                        <p>Mohon tunggu sebentar</p>
+                        <p>Mohon tunggu</p>
                     </div>
                 `;
                 document.body.appendChild(overlay);
@@ -941,14 +987,12 @@
             
             function hideLoading() {
                 const overlay = document.getElementById('downloadOverlay');
-                if (overlay) {
-                    overlay.remove();
-                }
+                if (overlay) overlay.remove();
             }
             
             function openInvitation() {
                 if (!namaInput.value.trim() || !alamatInput.value.trim()) {
-                    alert('Mohon isi nama dan alamat Anda terlebih dahulu');
+                    alert('Mohon isi nama dan alamat Anda');
                     return;
                 }
                 
@@ -980,91 +1024,60 @@
                 pageTwo.style.display = 'none';
                 pageThree.style.display = 'none';
                 
-                if (page === 1) {
-                    pageOne.style.display = 'block';
-                } else if (page === 2) {
-                    pageTwo.style.display = 'block';
-                } else if (page === 3) {
-                    pageThree.style.display = 'block';
-                }
+                if (page === 1) pageOne.style.display = 'block';
+                else if (page === 2) pageTwo.style.display = 'block';
+                else if (page === 3) pageThree.style.display = 'block';
                 
                 pageDots.forEach((dot, index) => {
-                    if (index + 1 === page) {
-                        dot.classList.add('active');
-                    } else {
-                        dot.classList.remove('active');
-                    }
+                    if (index + 1 === page) dot.classList.add('active');
+                    else dot.classList.remove('active');
                 });
             }
             
-            // Event listeners navigasi
+            // Event listeners
             bukaBtn.addEventListener('click', openInvitation);
             backBtn.addEventListener('click', backToCover);
             
-            // Tombol navigasi antar halaman
-            if (goToPage2Btn) {
-                goToPage2Btn.addEventListener('click', () => showMainPage(2));
-            }
-            
-            if (backToPage1Btn) {
-                backToPage1Btn.addEventListener('click', () => showMainPage(1));
-            }
-            
-            if (goToPage3Btn) {
-                goToPage3Btn.addEventListener('click', () => showMainPage(3));
-            }
-            
-            if (backToPage2Btn) {
-                backToPage2Btn.addEventListener('click', () => showMainPage(2));
-            }
+            if (goToPage2Btn) goToPage2Btn.addEventListener('click', () => showMainPage(2));
+            if (backToPage1Btn) backToPage1Btn.addEventListener('click', () => showMainPage(1));
+            if (goToPage3Btn) goToPage3Btn.addEventListener('click', () => showMainPage(3));
+            if (backToPage2Btn) backToPage2Btn.addEventListener('click', () => showMainPage(2));
             
             pageDots.forEach((dot) => {
                 dot.addEventListener('click', function() {
-                    const page = parseInt(this.getAttribute('data-page'));
-                    showMainPage(page);
+                    showMainPage(parseInt(this.getAttribute('data-page')));
                 });
             });
             
-            alamatInput.addEventListener('keypress', function(e) {
-                if (e.key === 'Enter') openInvitation();
-            });
-            
+            alamatInput.addEventListener('keypress', (e) => e.key === 'Enter' && openInvitation());
             namaInput.addEventListener('input', updateNamaTamu);
             alamatInput.addEventListener('input', updateNamaTamu);
             
             designerLogo.addEventListener('click', function() {
                 const email = 'ariefraihan.424@gmail.com';
                 const wa = '085641812827';
-                
-                const pilihan = confirm('Hubungi desainer melalui:\n- Email: ' + email + '\n- WhatsApp: ' + wa + '\n\nKlik OK untuk Email, Cancel untuk WhatsApp');
-                
-                if (pilihan) {
-                    window.location.href = 'mailto:' + email;
-                } else {
-                    window.open('https://wa.me/' + wa, '_blank');
-                }
+                const pilihan = confirm('Hubungi desainer:\n- Email: ' + email + '\n- WhatsApp: ' + wa + '\n\nOK = Email, Cancel = WA');
+                if (pilihan) window.location.href = 'mailto:' + email;
+                else window.open('https://wa.me/' + wa, '_blank');
             });
             
-            // FUNGSI UNDUH (hanya di halaman 3)
+            // FUNGSI UNDUH
             if (downloadBookBtn) {
                 downloadBookBtn.addEventListener('click', async function() {
                     if (!namaInput.value.trim() || !alamatInput.value.trim()) {
-                        alert('Mohon isi nama dan alamat Anda terlebih dahulu');
+                        alert('Mohon isi nama dan alamat Anda');
                         return;
                     }
                     
                     updateNamaTamu();
                     
-                    // Update halaman 3
                     if (guestNameSpan3) guestNameSpan3.textContent = guestNameSpan.textContent;
                     if (guestCitySpan3) guestCitySpan3.textContent = guestCitySpan.textContent;
                     if (invitedGuestName3) invitedGuestName3.textContent = invitedGuestName.textContent;
                     
                     const elementToCapture = document.querySelector('.invitation-wrapper');
-                    
                     showLoading();
                     
-                    // Elemen yang perlu disembunyikan
                     const navButtons = document.querySelectorAll('.nav-button');
                     const pageIndicator = document.querySelector('.page-indicator');
                     const designerLogoEl = document.querySelector('.designer-logo');
@@ -1073,7 +1086,6 @@
                     const navContainer = document.querySelectorAll('.nav-buttons-container');
                     
                     try {
-                        // Sembunyikan elemen
                         navButtons.forEach(btn => btn.style.visibility = 'hidden');
                         if (pageIndicator) pageIndicator.style.display = 'none';
                         if (designerLogoEl) designerLogoEl.style.display = 'none';
@@ -1081,7 +1093,6 @@
                         if (musicBtn) musicBtn.style.display = 'none';
                         navContainer.forEach(container => container.style.display = 'none');
                         
-                        // Pastikan background terlihat
                         mainBg.style.display = 'block';
                         
                         await new Promise(resolve => setTimeout(resolve, 500));
@@ -1092,7 +1103,7 @@
                             allowTaint: false,
                             useCORS: true,
                             logging: false,
-                            windowWidth: 600,
+                            windowWidth: 800,
                             onclone: function(clonedDoc) {
                                 const clonedNav = clonedDoc.querySelectorAll('.nav-button');
                                 clonedNav.forEach(btn => btn.style.visibility = 'hidden');
@@ -1114,7 +1125,6 @@
                             }
                         });
                         
-                        // Kembalikan tampilan
                         navButtons.forEach(btn => {
                             if (btn.classList.contains('active')) btn.style.visibility = 'visible';
                         });
@@ -1128,7 +1138,7 @@
                         const fileName = `undangan-azmi-rizky-${namaInput.value.trim().replace(/\s+/g, '-')}.png`;
                         link.download = fileName;
                         
-                        canvas.toBlob(function(blob) {
+                        canvas.toBlob((blob) => {
                             if (blob) {
                                 link.href = URL.createObjectURL(blob);
                                 link.click();
