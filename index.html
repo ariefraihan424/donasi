@@ -1,546 +1,1197 @@
 <!DOCTYPE html>
-<html lang="id">
+<html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Kuis Islami • O Vs O</title>
-  <!-- Font Awesome 6 (free) -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      font-family: 'Segoe UI', 'Cairo', 'Comic Neue', sans-serif;
-    }
-    body {
-      background: linear-gradient(145deg, #d9e8d4 0%, #c4dbc2 100%);
-      min-height: 100vh;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      padding: 20px;
-    }
-    .islamic-container {
-      max-width: 1000px;
-      width: 100%;
-      background: #fffef7;
-      border-radius: 70px 70px 50px 50px;
-      border: 6px solid #edc28b;
-      box-shadow: 0 30px 30px rgba(52, 102, 64, 0.3);
-      padding: 30px 30px 40px;
-      position: relative;
-      overflow: hidden;
-    }
-    /* hiasan islami */
-    .islamic-container::before {
-      content: "☪️⭐☪️";
-      font-size: 40px;
-      position: absolute;
-      top: -5px;
-      left: 20px;
-      opacity: 0.15;
-      transform: rotate(-5deg);
-      white-space: nowrap;
-    }
-    .islamic-container::after {
-      content: "";
-      position: absolute;
-      bottom: 0;
-      right: 0;
-      width: 200px;
-      height: 200px;
-      background: radial-gradient(circle, #f5e1b0 0%, transparent 70%);
-      border-radius: 50%;
-      z-index: 0;
-    }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Azmi & Rizky · Wedding Undangan (Dengan Musik)</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:wght@400;600;700&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            background: #2f2319;
+            font-family: 'Poppins', sans-serif;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .invitation-wrapper {
+            position: relative;
+            width: 100%;
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: #fcf7f0;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+            border-radius: 32px;
+            overflow: hidden;
+        }
+        
+        /* Background layer */
+        .cover-background, .main-background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+        }
+        
+        .cover-background img, .main-background img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            pointer-events: none;
+        }
+        
+        .main-background {
+            display: none;
+        }
+        
+        .content-layer {
+            position: relative;
+            z-index: 2;
+            width: 100%;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        /* Tombol navigasi */
+        .nav-button {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: rgba(255, 255, 255, 0.3);
+            backdrop-filter: blur(5px);
+            border: 1px solid rgba(215, 185, 140, 0.5);
+            border-radius: 40px;
+            padding: 0.5rem 1.2rem;
+            color: #6b4f2b;
+            cursor: pointer;
+            font-size: 0.9rem;
+            z-index: 20;
+            display: none;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .nav-button.active {
+            display: flex;
+        }
+        
+        .back-to-cover {
+            left: 20px;
+            right: auto;
+        }
+        
+        /* Tombol musik */
+        .music-control {
+            position: absolute;
+            bottom: 20px;
+            left: 20px;
+            background: rgba(255, 255, 255, 0.3);
+            backdrop-filter: blur(5px);
+            border: 1px solid rgba(215, 185, 140, 0.5);
+            border-radius: 40px;
+            padding: 0.5rem 1rem;
+            color: #6b4f2b;
+            cursor: pointer;
+            font-size: 0.9rem;
+            z-index: 20;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: 0.2s;
+        }
+        
+        .music-control:hover {
+            background: rgba(255, 255, 255, 0.5);
+        }
+        
+        .music-control.playing {
+            background: rgba(180, 140, 84, 0.3);
+            border-color: #b48c54;
+        }
+        
+        /* ===== HALAMAN COVER ===== */
+        .cover-page {
+            width: 100%;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            align-items: center;
+            padding: 2rem 1.5rem 4rem;
+            position: relative;
+            z-index: 5;
+        }
+        
+        .invitation-card {
+            background: rgba(255, 250, 240, 0.85);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(215, 185, 140, 0.7);
+            border-radius: 48px 48px 32px 32px;
+            padding: 1.8rem 1.5rem 2rem;
+            width: 100%;
+            max-width: 450px;
+            box-shadow: 0 20px 40px -10px rgba(0,0,0,0.2);
+            margin-bottom: 2rem;
+        }
+        
+        .field {
+            margin-bottom: 1.2rem;
+        }
+        
+        .field label {
+            display: block;
+            font-size: 0.75rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: #6b4f2b;
+            margin-bottom: 0.3rem;
+            font-weight: 500;
+            margin-left: 1.2rem;
+        }
+        
+        .field input {
+            width: 100%;
+            padding: 1rem 1.5rem;
+            background: rgba(255, 250, 240, 0.95);
+            border: 1px solid #e3d1b5;
+            border-radius: 60px;
+            font-size: 1rem;
+            color: #3f2f18;
+            outline: none;
+            transition: 0.2s;
+        }
+        
+        .field input:focus {
+            border-color: #c9a76b;
+            box-shadow: 0 0 0 2px rgba(201,167,107,0.3);
+            background: #fffcf5;
+        }
+        
+        .btn-open {
+            background: linear-gradient(145deg, #b48c54, #9e6f3d);
+            border: none;
+            padding: 1rem 1.8rem;
+            border-radius: 60px;
+            width: 100%;
+            font-size: 1.3rem;
+            font-weight: 600;
+            letter-spacing: 2px;
+            color: #fef7e9;
+            text-shadow: 0 2px 3px #5f3e1f;
+            box-shadow: 0 15px 20px -10px #805d37, 0 2px 0 #624a2b inset;
+            cursor: pointer;
+            transition: 0.15s;
+            margin-top: 0.5rem;
+            border: 1px solid #e9c998;
+            text-transform: uppercase;
+            font-family: 'Playfair Display', serif;
+        }
+        
+        .btn-open:hover {
+            transform: scale(1.02);
+            background: linear-gradient(145deg, #c29b61, #ab7d48);
+        }
+        
+        .ornament-line {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin: 5px 0 8px;
+            opacity: 0.7;
+        }
+        
+        .ornament-line span {
+            display: inline-block;
+            width: 30px;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, #cbad7a, transparent);
+        }
+        
+        /* ===== HALAMAN UTAMA (1, 2, dan 3) ===== */
+        .main-page {
+            width: 100%;
+            min-height: 100vh;
+            display: none;
+            flex-direction: column;
+            padding: 2.5rem 1.8rem 1rem;
+            position: relative;
+            z-index: 5;
+            background: transparent;
+        }
+        
+        .main-page.active {
+            display: flex;
+        }
+        
+        .page {
+            width: 100%;
+        }
+        
+        .page-one, .page-two, .page-three {
+            width: 100%;
+        }
+        
+        .page-two {
+            margin-top: 2rem;
+            padding-top: 2rem;
+            border-top: 2px dashed #d4b68a;
+        }
+        
+        .page-three {
+            margin-top: 2rem;
+            padding-top: 2rem;
+            border-top: 2px dashed #d4b68a;
+        }
+        
+        /* Layout buku untuk halaman 3 */
+        .book-layout {
+            display: flex;
+            gap: 20px;
+            width: 100%;
+        }
+        
+        .book-left, .book-right {
+            flex: 1;
+            min-width: 0;
+        }
+        
+        .book-left {
+            border-right: 2px dashed #d4b68a;
+            padding-right: 15px;
+        }
+        
+        .book-right {
+            padding-left: 15px;
+        }
+        
+        .guest-greeting {
+            background: rgba(255, 250, 240, 0.7);
+            border-radius: 60px;
+            padding: 0.8rem 1.5rem;
+            margin-bottom: 1.5rem;
+            text-align: center;
+            backdrop-filter: blur(4px);
+            border: 1px solid #e3d1b5;
+            font-size: 1.1rem;
+            color: #6b4f2b;
+        }
+        
+        .guest-greeting i {
+            color: #b48c54;
+            margin-right: 8px;
+        }
+        
+        .section-title {
+            text-align: center;
+            font-family: 'Great Vibes', cursive;
+            font-size: 2.8rem;
+            color: #b48c54;
+            margin-bottom: 0.5rem;
+            font-weight: 400;
+            text-shadow: 1px 1px 0 #ffe5c8;
+        }
+        
+        .bismillah {
+            text-align: center;
+            font-size: 1.8rem;
+            font-family: 'Great Vibes', cursive;
+            color: #9e7f5a;
+            margin: 1rem 0;
+        }
+        
+        .invitation-text {
+            text-align: center;
+            margin: 1.5rem 0;
+            line-height: 1.8;
+            color: #3f2f18;
+            background: rgba(255,250,240,0.6);
+            padding: 1.5rem;
+            border-radius: 30px;
+            backdrop-filter: blur(4px);
+        }
+        
+        .couple-names {
+            text-align: center;
+            font-size: 2.2rem;
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+            color: #3f2f18;
+            margin: 1rem 0;
+        }
+        
+        .couple-names span {
+            display: inline-block;
+            background: rgba(238, 220, 200, 0.7);
+            padding: 0.2rem 1.5rem;
+            border-radius: 60px;
+            font-size: 1.4rem;
+            color: #7a5a34;
+            font-family: 'Great Vibes', cursive;
+            margin: 0 0.5rem;
+        }
+        
+        .parents-name {
+            text-align: center;
+            font-style: italic;
+            color: #7a6234;
+            margin-bottom: 2rem;
+            font-size: 0.95rem;
+        }
+        
+        .event-card {
+            background: rgba(255, 250, 240, 0.6);
+            backdrop-filter: blur(4px);
+            border-radius: 30px;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            border: 1px solid #ebd6bc;
+        }
+        
+        .event-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            color: #9e6f3d;
+            margin-bottom: 1rem;
+            text-align: center;
+            border-bottom: 1px solid #d4b68a;
+            padding-bottom: 0.5rem;
+        }
+        
+        .event-detail {
+            display: flex;
+            align-items: flex-start;
+            gap: 15px;
+            margin-bottom: 1.2rem;
+        }
+        
+        .event-detail i {
+            color: #b48c54;
+            width: 25px;
+            font-size: 1.2rem;
+            margin-top: 3px;
+        }
+        
+        .event-detail p {
+            color: #3a2e1e;
+            line-height: 1.6;
+        }
+        
+        .event-detail strong {
+            color: #7a5a34;
+            font-weight: 600;
+        }
+        
+        .btn-download {
+            background: rgba(255, 246, 229, 0.9);
+            border: 2px solid #b48c54;
+            color: #6b4f2b;
+            padding: 1rem 2rem;
+            border-radius: 40px;
+            font-size: 1.2rem;
+            font-weight: 600;
+            width: 100%;
+            margin: 1.5rem 0 0.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            transition: 0.2s;
+            cursor: pointer;
+            backdrop-filter: blur(4px);
+        }
+        
+        .btn-download:hover {
+            background: #b48c54;
+            color: white;
+            border-color: #9e6f3d;
+        }
+        
+        .page-indicator {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin: 1rem 0;
+        }
+        
+        .page-dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: #d4b68a;
+            cursor: pointer;
+        }
+        
+        .page-dot.active {
+            background: #9e6f3d;
+            transform: scale(1.3);
+        }
+        
+        .main-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin: 1rem 0 0.5rem;
+        }
+        
+        .main-nav-btn {
+            background: rgba(255,255,255,0.3);
+            backdrop-filter: blur(4px);
+            border: 1px solid #d4b68a;
+            border-radius: 40px;
+            padding: 0.5rem 1rem;
+            color: #6b4f2b;
+            cursor: pointer;
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+        
+        .main-nav-btn:disabled {
+            opacity: 0.3;
+            cursor: not-allowed;
+        }
+        
+        .designer-logo {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 1rem;
+            margin-bottom: 1rem;
+            padding: 0.5rem;
+            cursor: pointer;
+        }
+        
+        .designer-logo img {
+            width: auto;
+            height: 40px;
+            max-width: 120px;
+            object-fit: contain;
+            opacity: 0.8;
+            transition: opacity 0.2s;
+        }
+        
+        .designer-logo img:hover {
+            opacity: 1;
+        }
+        
+        .footer-note {
+            text-align: center;
+            color: #ab8e62;
+            font-size: 0.8rem;
+            margin-top: 1rem;
+            border-top: 1px dashed #dcc9ae;
+            padding-top: 1.5rem;
+        }
 
-    /* header judul */
-    h1 {
-      text-align: center;
-      font-size: 3rem;
-      color: #1b6532;
-      text-shadow: 3px 3px 0 #f8d68f;
-      margin-bottom: 15px;
-      letter-spacing: 2px;
-      position: relative;
-      z-index: 2;
-    }
+        .download-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.5);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            backdrop-filter: blur(5px);
+        }
+        
+        .loading-spinner {
+            background: white;
+            padding: 2rem;
+            border-radius: 20px;
+            text-align: center;
+        }
+        
+        .loading-spinner i {
+            font-size: 3rem;
+            color: #b48c54;
+            margin-bottom: 1rem;
+        }
 
-    /* area O vs O (dua lingkaran skor) */
-    .score-circle-area {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      gap: 20px 40px;
-      flex-wrap: wrap;
-      margin: 20px 0 15px;
-      position: relative;
-      z-index: 5;
-    }
-    .circle {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-    }
-    .circle .big-o {
-      width: 140px;
-      height: 140px;
-      background: #fef7d2;
-      border: 12px solid #d4a76a;
-      border-radius: 50%;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      font-size: 4.5rem;
-      font-weight: 800;
-      color: #2b6b3b;
-      box-shadow: 0 15px 0 #a77d4b, 0 20px 20px #5c713b;
-      transition: 0.2s;
-      margin-bottom: 10px;
-    }
-    .circle span {
-      font-size: 2rem;
-      font-weight: 600;
-      background: #fbdd9d;
-      padding: 10px 30px;
-      border-radius: 50px;
-      border: 4px solid #bc914b;
-      color: #335f33;
-      box-shadow: 0 7px 0 #836e3e;
-    }
-    .vs {
-      font-size: 3rem;
-      font-weight: 800;
-      background: #ebc27c;
-      width: 90px;
-      height: 90px;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      border: 6px solid #b78b4a;
-      color: #215021;
-      box-shadow: 0 8px 0 #6e532d;
-    }
-
-    /* dua kolom tim */
-    .teams-row {
-      display: flex;
-      gap: 30px;
-      margin-top: 40px;
-      position: relative;
-      z-index: 10;
-    }
-    .team-card {
-      flex: 1;
-      background: #f9f2dc;
-      border: 5px solid #bfd8b8;
-      border-radius: 60px 60px 30px 30px;
-      padding: 25px 20px 30px;
-      box-shadow: 0 18px 0 #7daa7d, 0 20px 20px #456745;
-    }
-    .team-left {
-      border-color: #f9b8b8;
-      box-shadow: 0 18px 0 #bc6f6f, 0 20px 20px #784e4e;
-    }
-    .team-right {
-      border-color: #aac9f0;
-      box-shadow: 0 18px 0 #6183a8, 0 20px 20px #35506b;
-    }
-    .team-header {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 15px;
-      font-size: 2.2rem;
-      font-weight: bold;
-      background: #fdeec9;
-      border-radius: 60px;
-      padding: 10px 20px;
-      margin-top: -50px;
-      margin-bottom: 25px;
-      border: 4px solid;
-    }
-    .team-left .team-header {
-      color: #b15252;
-      border-color: #b15252;
-    }
-    .team-right .team-header {
-      color: #3f77a3;
-      border-color: #3f77a3;
-    }
-    .team-header i {
-      font-size: 2.8rem;
-    }
-
-    .question-box {
-      background: #e1eac5;
-      border: 4px solid #598559;
-      border-radius: 50px;
-      padding: 15px 18px;
-      font-size: 1.4rem;
-      font-weight: 600;
-      color: #194d19;
-      margin-bottom: 20px;
-      min-height: 100px;
-      box-shadow: inset 0 -3px 0 #466446;
-      word-break: break-word;
-    }
-    .options {
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-      margin: 20px 0;
-    }
-    .option-item {
-      background: #f5e1be;
-      border: 3px solid #7e9f6b;
-      border-radius: 40px;
-      padding: 10px 18px;
-      font-size: 1.2rem;
-      color: #1c431c;
-      font-weight: 500;
-      cursor: pointer;
-      transition: 0.1s;
-      display: flex;
-      align-items: center;
-      box-shadow: 0 5px 0 #6e8f5c;
-    }
-    .option-item.selected {
-      background: #c2e0a6;
-      border-color: #327a32;
-      box-shadow: 0 2px 0 #327a32;
-      transform: translateY(3px);
-    }
-    .option-item input[type="radio"] {
-      appearance: none;
-      width: 22px;
-      height: 22px;
-      background: white;
-      border-radius: 50%;
-      border: 3px solid #3f6f3f;
-      margin-right: 15px;
-    }
-    .option-item input[type="radio"]:checked {
-      background: #1f8b1f;
-      border-color: #135013;
-      box-shadow: inset 0 0 0 4px white;
-    }
-
-    .answer-btn {
-      background: #fec382;
-      border: none;
-      font-size: 1.7rem;
-      font-weight: bold;
-      padding: 16px 20px;
-      border-radius: 60px;
-      width: 100%;
-      color: #2b5e2b;
-      border-bottom: 7px solid #b1662c;
-      cursor: pointer;
-      transition: 0.07s linear;
-      margin: 10px 0;
-      box-shadow: 0 5px 15px #bb874b;
-    }
-    .answer-btn:active {
-      border-bottom-width: 2px;
-      transform: translateY(5px);
-    }
-    .answer-btn:disabled {
-      opacity: 0.5;
-      border-bottom-width: 7px;
-      transform: none;
-      pointer-events: none;
-    }
-    .team-left .answer-btn {
-      background: #ffb4b4;
-      border-bottom-color: #ad4242;
-      color: #5d2b2b;
-    }
-    .team-right .answer-btn {
-      background: #aad1ff;
-      border-bottom-color: #3a72a5;
-      color: #1d3c5e;
-    }
-
-    .feedback {
-      text-align: center;
-      font-size: 1.4rem;
-      font-weight: 600;
-      min-height: 40px;
-      color: #2f6b2f;
-    }
-    .feedback.correct-feedback {
-      color: #1e7e1e;
-    }
-    .feedback.wrong-feedback {
-      color: #b34141;
-    }
-    .global-notif {
-      text-align: center;
-      font-size: 1.7rem;
-      background: #efe1c6;
-      border-radius: 50px;
-      padding: 12px 25px;
-      margin: 25px auto 10px;
-      border: 4px solid #b48b4b;
-      color: #1d5b1d;
-      width: fit-content;
-    }
-
-    footer {
-      text-align: center;
-      color: #3a7340;
-      margin-top: 20px;
-    }
-  </style>
+        .download-indicator {
+            text-align: center;
+            font-size: 0.9rem;
+            color: #9e6f3d;
+            margin-top: 0.5rem;
+        }
+        
+        .download-indicator i {
+            margin-right: 5px;
+        }
+    </style>
 </head>
 <body>
-<div class="islamic-container">
-  <h1>⭐ KUIS ISLAMI ⭐</h1>
+    <!-- Audio element with autoplay -->
+    <audio id="bgMusic" loop autoplay>
+        <source src="song.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
 
-  <!-- Dua lingkaran O Vs O -->
-  <div class="score-circle-area">
-    <div class="circle">
-      <div class="big-o" id="scoreLeftCircle">0</div>
-      <span>Tim A</span>
+    <div class="invitation-wrapper">
+        <!-- Background COVER -->
+        <div class="cover-background" id="coverBg">
+            <img src="azmi.png" alt="Cover background" 
+                 onerror="this.onerror=null; this.src='data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 600 800\'%3E%3Cdefs%3E%3ClinearGradient id=\'g\' x1=\'0%25\' y1=\'0%25\' x2=\'100%25\' y2=\'100%25\'%3E%3Cstop offset=\'0%25\' stop-color=\'%23f9e9cf\'/%3E%3Cstop offset=\'100%25\' stop-color=\'%23eddbbd\'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width=\'600\' height=\'800\' fill=\'url(%23g)\'/%3E%3Ctext x=\'220\' y=\'400\' font-family=\'Playfair Display\' font-size=\'90\' fill=\'%237a5b3a\'%3ER%3C/text%3E%3Ctext x=\'320\' y=\'400\' font-family=\'Playfair Display\' font-size=\'90\' fill=\'%237a5b3a\'%3EA%3C/text%3E%3C/svg%3E';">
+        </div>
+        
+        <!-- Background HALAMAN UTAMA -->
+        <div class="main-background" id="mainBg">
+            <img src="utama.png" alt="Main background" 
+                 onerror="this.onerror=null; this.src='data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 600 800\'%3E%3Cdefs%3E%3ClinearGradient id=\'g2\' x1=\'0%25\' y1=\'0%25\' x2=\'100%25\' y2=\'100%25\'%3E%3Cstop offset=\'0%25\' stop-color=\'%23f5e6d3\'/%3E%3Cstop offset=\'100%25\' stop-color=\'%23e8d5bc\'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width=\'600\' height=\'800\' fill=\'url(%23g2)\'/%3E%3Cpath d=\'M150,200 L450,200' stroke='%23b48c54' stroke-width='2' stroke-dasharray='10 10'/%3E%3Ctext x=\'250\' y=\'300\' font-family=\'Great Vibes\' font-size=\'60\' fill=\'%239e6f3d\'%3EWedding%3C/text%3E%3C/svg%3E';">
+        </div>
+        
+        <!-- Konten -->
+        <div class="content-layer">
+            <!-- Tombol navigasi -->
+            <div class="nav-button back-to-cover" id="backToCoverBtn">
+                <i class="fas fa-arrow-left"></i> Kembali ke Cover
+            </div>
+            <div class="nav-button" id="togglePageBtn">
+                <span id="togglePageText">Halaman 2</span> <i class="fas fa-arrow-right"></i>
+            </div>
+            
+            <!-- Tombol kontrol musik -->
+            <div class="music-control playing" id="musicControl">
+                <i class="fas fa-music"></i> <span id="musicStatus">Playing</span>
+            </div>
+            
+            <!-- COVER -->
+            <div id="coverPage" class="cover-page">
+                <div class="invitation-card">
+                    <div class="field">
+                        <label for="nama">✧ Nama Lengkap ✧</label>
+                        <input type="text" id="nama" placeholder="Masukkan nama Anda" value="">
+                    </div>
+                    <div class="field">
+                        <label for="alamat">✧ Alamat / Kota ✧</label>
+                        <input type="text" id="alamat" placeholder="Masukkan alamat Anda" value="">
+                    </div>
+                    <div class="ornament-line">
+                        <span></span><span style="width: 60px;"></span><span></span>
+                    </div>
+                    <button class="btn-open" id="bukaUndanganBtn">
+                        <i class="fas fa-envelope-open"></i> Buka Undangan
+                    </button>
+                </div>
+                <div style="color: #fff; text-shadow: 0 2px 4px rgba(0,0,0,0.3);">
+                    <i class="fas fa-chevron-down"></i> Masukkan data untuk membuka
+                </div>
+            </div>
+            
+            <!-- HALAMAN UTAMA (1, 2, dan 3) -->
+            <div id="mainPage" class="main-page">
+                <div class="guest-greeting">
+                    <i class="fas fa-user-check"></i> <span id="guestNameDisplay">Azmi Putra</span> · <span id="guestCityDisplay">Jakarta</span>
+                </div>
+                
+                <div class="page-indicator">
+                    <span class="page-dot active" data-page="1"></span>
+                    <span class="page-dot" data-page="2"></span>
+                    <span class="page-dot" data-page="3"></span>
+                </div>
+                
+                <div class="main-nav">
+                    <button class="main-nav-btn" id="prevPageBtn" disabled><i class="fas fa-chevron-left"></i> Sebelumnya</button>
+                    <span style="color:#7a5a34;" id="pageNumberDisplay">Halaman 1</span>
+                    <button class="main-nav-btn" id="nextPageBtn">Selanjutnya <i class="fas fa-chevron-right"></i></button>
+                </div>
+                
+                <!-- Container 3 halaman -->
+                <div id="pageContainer">
+                    <!-- HALAMAN 1 -->
+                    <div id="pageOne" class="page page-one">
+                        <div class="bismillah">بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ</div>
+                        <div class="section-title">The Wedding of</div>
+                        <div class="couple-names">
+                            Azmi <span>&</span> Rizky
+                        </div>
+                        <div class="parents-name">
+                            Putra dari Bpk. Ahmad & Ibu Siti · Putri dari Bpk. Budi & Ibu Dewi
+                        </div>
+                        
+                        <div class="invitation-text">
+                            Dengan memohon rahmat dan ridho Allah SWT, kami bermaksud menyelenggarakan akad nikah dan resepsi pernikahan putra-putri kami. <br><br>
+                            <strong>Kepada Yth. Bapak/Ibu/Saudara/i</strong><br>
+                            <span style="font-size: 1.3rem; color: #9e6f3d;" id="invitedGuestName">Azmi Putra</span><br>
+                            di tempat
+                        </div>
+                        
+                        <div class="event-card">
+                            <div class="event-title">Akad Nikah</div>
+                            <div class="event-detail">
+                                <i class="fas fa-map-marker-alt"></i>
+                                <p><strong>Kedungwaru, Prembun</strong><br>Jl. Masjid No. 7, Kedungwaru</p>
+                            </div>
+                            <div class="event-detail">
+                                <i class="fas fa-clock"></i>
+                                <p><strong>Pukul 07.00 WIB</strong><br>Jumat, 17 Maret 2026</p>
+                            </div>
+                        </div>
+                        
+                        <div class="event-card">
+                            <div class="event-title">Resepsi Pernikahan</div>
+                            <div class="event-detail">
+                                <i class="fas fa-map-marker-alt"></i>
+                                <p><strong>Pejagatan, Kutowinangun</strong><br>Jl. Raya Selatan No. 45, Pejagatan</p>
+                            </div>
+                            <div class="event-detail">
+                                <i class="fas fa-clock"></i>
+                                <p><strong>Pukul 13.00 WIB - selesai</strong><br>Sabtu, 18 Maret 2026</p>
+                            </div>
+                        </div>
+                        
+                        <div class="location" style="background: rgba(215, 185, 140, 0.2); padding: 1rem; border-radius: 20px;">
+                            <i class="fas fa-info-circle"></i> Acara ijab dilaksanakan di Kedungwaru, resepsi keesokan harinya di Pejagatan.
+                        </div>
+                        
+                        <div class="download-indicator">
+                            <i class="fas fa-camera"></i> Halaman 1
+                        </div>
+                    </div>
+                    
+                    <!-- HALAMAN 2 -->
+                    <div id="pageTwo" class="page page-two" style="display: none;">
+                        <div class="section-title">Azmi & Rizky</div>
+                        
+                        <div class="event-card">
+                            <div class="event-title">Profil Mempelai</div>
+                            <div style="display: flex; flex-direction: column; gap: 1.2rem;">
+                                <div>
+                                    <i class="fas fa-male" style="color: #9e6f3d; width: 25px;"></i>
+                                    <strong style="font-size: 1.2rem;">Azmi Ahmad</strong><br>
+                                    Putra pertama dari Bpk. Ahmad & Ibu Siti<br>
+                                    <span style="color: #7a5a34;">Kedungwaru, Prembun</span>
+                                </div>
+                                <div>
+                                    <i class="fas fa-female" style="color: #9e6f3d; width: 25px;"></i>
+                                    <strong style="font-size: 1.2rem;">Rizky Budi</strong><br>
+                                    Putri pertama dari Bpk. Budi & Ibu Dewi<br>
+                                    <span style="color: #7a5a34;">Pejagatan, Kutowinangun</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="event-card">
+                            <div class="event-title">Rundown Acara</div>
+                            
+                            <div style="margin-bottom: 1.5rem;">
+                                <h3 style="color: #9e6f3d; border-bottom: 1px solid #d4b68a; padding-bottom: 0.3rem;">📍 Ijab (Kedungwaru)</h3>
+                                <div class="event-detail"><i class="fas fa-clock"></i> <p>06.30 - 07.00 : Persiapan akad</p></div>
+                                <div class="event-detail"><i class="fas fa-clock"></i> <p>07.00 - 08.00 : Prosesi ijab qabul</p></div>
+                                <div class="event-detail"><i class="fas fa-clock"></i> <p>08.00 - 09.00 : Sungkeman & doa</p></div>
+                            </div>
+                            
+                            <div>
+                                <h3 style="color: #9e6f3d; border-bottom: 1px solid #d4b68a; padding-bottom: 0.3rem;">📍 Resepsi (Pejagatan)</h3>
+                                <div class="event-detail"><i class="fas fa-clock"></i> <p>12.00 - 13.00 : Kedatangan tamu</p></div>
+                                <div class="event-detail"><i class="fas fa-clock"></i> <p>13.00 - 14.00 : Prosesi resepsi</p></div>
+                                <div class="event-detail"><i class="fas fa-clock"></i> <p>14.00 - 16.00 : Hiburan & ramah tamah</p></div>
+                            </div>
+                        </div>
+                        
+                        <div class="event-card" style="background: rgba(215, 185, 140, 0.2); text-align: center;">
+                            <i class="fas fa-heart" style="color: #b48c54; font-size: 1.5rem;"></i><br>
+                            Merupakan suatu kehormatan apabila Bapak/Ibu/Saudara/i berkenan hadir.
+                        </div>
+                        
+                        <div class="download-indicator">
+                            <i class="fas fa-camera"></i> Halaman 2
+                        </div>
+                    </div>
+                    
+                    <!-- HALAMAN 3 - Tampilan Buku -->
+                    <div id="pageThree" class="page page-three" style="display: none;">
+                        <div class="guest-greeting" style="margin-bottom: 1rem;">
+                            <i class="fas fa-user-check"></i> <span id="guestNameDisplay3">Azmi Putra</span> · <span id="guestCityDisplay3">Jakarta</span>
+                        </div>
+                        
+                        <div class="book-layout">
+                            <!-- Halaman 1 (Kiri) -->
+                            <div class="book-left">
+                                <div class="bismillah" style="font-size: 1.5rem;">بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ</div>
+                                <div class="section-title" style="font-size: 2rem;">The Wedding of</div>
+                                <div class="couple-names" style="font-size: 1.6rem;">
+                                    Azmi <span style="font-size: 1.1rem;">&</span> Rizky
+                                </div>
+                                <div class="parents-name" style="font-size: 0.8rem;">
+                                    Putra dari Bpk. Ahmad & Ibu Siti · Putri dari Bpk. Budi & Ibu Dewi
+                                </div>
+                                
+                                <div class="invitation-text" style="padding: 0.8rem; font-size: 0.9rem;">
+                                    Dengan memohon rahmat dan ridho Allah SWT, kami bermaksud menyelenggarakan akad nikah dan resepsi pernikahan putra-putri kami. <br><br>
+                                    <strong>Kepada Yth.</strong><br>
+                                    <span style="font-size: 1rem; color: #9e6f3d;" id="invitedGuestName3">Azmi Putra</span><br>
+                                    di tempat
+                                </div>
+                                
+                                <div class="event-card" style="padding: 0.8rem;">
+                                    <div class="event-title" style="font-size: 1.2rem;">Akad Nikah</div>
+                                    <div class="event-detail" style="gap: 8px; font-size: 0.9rem;">
+                                        <i class="fas fa-map-marker-alt"></i>
+                                        <p><strong>Kedungwaru, Prembun</strong><br>Jl. Masjid No. 7</p>
+                                    </div>
+                                    <div class="event-detail" style="gap: 8px; font-size: 0.9rem;">
+                                        <i class="fas fa-clock"></i>
+                                        <p><strong>07.00 WIB</strong><br>Jumat, 17 Maret 2026</p>
+                                    </div>
+                                </div>
+                                
+                                <div class="event-card" style="padding: 0.8rem;">
+                                    <div class="event-title" style="font-size: 1.2rem;">Resepsi</div>
+                                    <div class="event-detail" style="gap: 8px; font-size: 0.9rem;">
+                                        <i class="fas fa-map-marker-alt"></i>
+                                        <p><strong>Pejagatan, Kutowinangun</strong><br>Jl. Raya Selatan No. 45</p>
+                                    </div>
+                                    <div class="event-detail" style="gap: 8px; font-size: 0.9rem;">
+                                        <i class="fas fa-clock"></i>
+                                        <p><strong>13.00 WIB</strong><br>Sabtu, 18 Maret 2026</p>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Halaman 2 (Kanan) -->
+                            <div class="book-right">
+                                <div class="section-title" style="font-size: 2rem; margin-top: 0;">Azmi & Rizky</div>
+                                
+                                <div class="event-card" style="padding: 0.8rem;">
+                                    <div class="event-title" style="font-size: 1.2rem;">Profil Mempelai</div>
+                                    <div style="font-size: 0.85rem;">
+                                        <div style="margin-bottom: 0.8rem;">
+                                            <i class="fas fa-male" style="color: #9e6f3d;"></i>
+                                            <strong>Azmi Ahmad</strong><br>
+                                            Putra pertama Bpk. Ahmad & Ibu Siti<br>
+                                            <span style="color: #7a5a34;">Kedungwaru, Prembun</span>
+                                        </div>
+                                        <div>
+                                            <i class="fas fa-female" style="color: #9e6f3d;"></i>
+                                            <strong>Rizky Budi</strong><br>
+                                            Putri pertama Bpk. Budi & Ibu Dewi<br>
+                                            <span style="color: #7a5a34;">Pejagatan, Kutowinangun</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="event-card" style="padding: 0.8rem;">
+                                    <div class="event-title" style="font-size: 1.2rem;">Rundown</div>
+                                    
+                                    <div style="margin-bottom: 0.8rem;">
+                                        <h3 style="color: #9e6f3d; font-size: 0.9rem;">📍 Ijab (Kedungwaru)</h3>
+                                        <div class="event-detail" style="gap: 5px; font-size: 0.8rem;"><i class="fas fa-clock"></i> <p>06.30-07.00: Persiapan</p></div>
+                                        <div class="event-detail" style="gap: 5px; font-size: 0.8rem;"><i class="fas fa-clock"></i> <p>07.00-08.00: Ijab qabul</p></div>
+                                        <div class="event-detail" style="gap: 5px; font-size: 0.8rem;"><i class="fas fa-clock"></i> <p>08.00-09.00: Sungkeman</p></div>
+                                    </div>
+                                    
+                                    <div>
+                                        <h3 style="color: #9e6f3d; font-size: 0.9rem;">📍 Resepsi (Pejagatan)</h3>
+                                        <div class="event-detail" style="gap: 5px; font-size: 0.8rem;"><i class="fas fa-clock"></i> <p>12.00-13.00: Kedatangan tamu</p></div>
+                                        <div class="event-detail" style="gap: 5px; font-size: 0.8rem;"><i class="fas fa-clock"></i> <p>13.00-14.00: Prosesi</p></div>
+                                        <div class="event-detail" style="gap: 5px; font-size: 0.8rem;"><i class="fas fa-clock"></i> <p>14.00-16.00: Hiburan</p></div>
+                                    </div>
+                                </div>
+                                
+                                <div style="text-align: center; font-size: 0.75rem; background: rgba(215, 185, 140, 0.2); padding: 0.5rem; border-radius: 20px;">
+                                    <i class="fas fa-heart" style="color: #b48c54;"></i> Mohon doa restunya
+                                </div>
+                            </div>
+                        </div>
+                        <div class="download-indicator">
+                            <i class="fas fa-camera"></i> Halaman 3 (Buku)
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- LOGO DESAINER -->
+                <div class="designer-logo" id="designerLogo">
+                    <img src="logo.png" alt="Desainer Logo" 
+                         onerror="this.onerror=null; this.src='data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 200 80\'%3E%3Crect width=\'200\' height=\'80\' fill=\'%23f0e4d0\' rx=\'10\'/%3E%3Ctext x=\'20\' y=\'45\' font-family=\'Poppins\' font-size=\'22\' fill=\'%239e6f3d\'%3EDesain%3C/text%3E%3Ctext x=\'110\' y=\'55\' font-family=\'Great Vibes\' font-size=\'28\' fill=\'%23b48c54\'%3EAzmi%3C/text%3E%3C/svg%3E';"
+                         title="Klik untuk hubungi desainer">
+                </div>
+                
+                <!-- TOMBOL UNDUH -->
+                <button class="btn-download" id="downloadCurrentPage">
+                    <i class="fas fa-download"></i> Unduh Tampilan Buku
+                </button>
+                
+                <div class="footer-note">
+                    ✦ Wassalamu'alaikum Warahmatullahi Wabarakatuh ✦
+                </div>
+            </div>
+        </div>
     </div>
-    <div class="vs">VS</div>
-    <div class="circle">
-      <div class="big-o" id="scoreRightCircle">0</div>
-      <span>Tim B</span>
-    </div>
-  </div>
-
-  <!-- Dua kolom soal (Tim A kiri, Tim B kanan) -->
-  <div class="teams-row">
-    <!-- Tim A (kiri) -->
-    <div class="team-card team-left">
-      <div class="team-header">
-        <i class="fas fa-child"></i> Tim A <i class="fas fa-mosque"></i>
-      </div>
-      <div class="question-box" id="leftQuestion">Memuat soal...</div>
-      <div class="options" id="leftOptions"></div>
-      <button class="answer-btn" id="leftAnswerBtn"><i class="fas fa-paper-plane"></i> JAWAB TIM A</button>
-      <div class="feedback" id="leftFeedback"></div>
-    </div>
-
-    <!-- Tim B (kanan) -->
-    <div class="team-card team-right">
-      <div class="team-header">
-        <i class="fas fa-child"></i> Tim B <i class="fas fa-moon"></i>
-      </div>
-      <div class="question-box" id="rightQuestion">Memuat soal...</div>
-      <div class="options" id="rightOptions"></div>
-      <button class="answer-btn" id="rightAnswerBtn"><i class="fas fa-paper-plane"></i> JAWAB TIM B</button>
-      <div class="feedback" id="rightFeedback"></div>
-    </div>
-  </div>
-
-  <!-- notifikasi global -->
-  <div class="global-notif" id="globalNotif">✨ Ayo semangat, jawab dengan jujur! ✨</div>
-  <footer> ☪️  Kisah teladan 30 soal  ☪️ </footer>
-</div>
-
-<script>
-  // =================== DATA SOAL (30 SOAL) ===================
-  const questions = [
-    { q: "1. Penyakit apa yang diderita oleh tokoh pertama sehingga ia berada jauh dari warga?", a: "A. Sakit gigi", b: "B. Penyakit kusta", c: "C. Pusing kepala", d: "D. Sakit mata", correct: "B" },
-    { q: "2. Apa yang menyebabkan si botak merasa sangat sedih?", a: "A. Tidak punya baju", b: "B. Kepalanya tidak ditumbuhi rambut", c: "C. Tidak punya teman bermain", d: "D. Rumahnya jauh", correct: "B" },
-    { q: "3. Apa kekurangan fisik yang dialami oleh tokoh ketiga?", a: "A. Telinganya tuli", b: "B. Tangannya sakit", c: "C. mata buta", d: "D. Kakinya pincang", correct: "C" },
-    { q: "4. Mengapa si buta sering merasa sedih saat pulang dari pasar?", a: "A. Karena rotinya tidak enak", b: "B. Karena sering ditipu orang saat membayar uang", c: "C. Karena pasar sangat ramai", d: "D. Karena dia tidak suka belanja", correct: "B" },
-    { q: "5. Ke mana orang ketiga tersebut pergi untuk meminta pertolongan?", a: "A. Mencari tabib (dokter)", b: "B. Pergi ke pasar", c: "C. Pergi ke hutan", d: "D. Mencari raja", correct: "A" },
-    { q: "6. Siapakah sosok yang sebenarnya datang membantu mereka dengan menyamar?", a: "A. Seorang musafir biasa", b: "B. Malaikat yang diutus Allah", c: "C. Seorang pedagang kaya", d: "D. Seorang prajurit", correct: "B" },
-    { q: "7. Apa yang dilakukan malaikat saat pertama kali bertemu si kusta?", a: "A. Memberinya makan", b: "B. Memberikan obat dan menyembuhkannya", c: "C. Mengusirnya", d: "D. Memberinya uang emas", correct: "B" },
-    { q: "8. Setelah si botak sembuh, apa yang tumbuh di kepalanya?", a: "A. Topi yang indah", b: "B. Rambut yang bagus", c: "C. Mahkota emas", d: "D. Bunga-bunga", correct: "B" },
-    { q: "9. Harta apa yang diberikan kepada si kusta untuk dipelihara?", a: "A. Sepuluh ekor unta", b: "B. Seratus ekor ayam", c: "C. Seekor kucing", d: "D. Sepuluh ekor kuda", correct: "A" },
-    { q: "10. Hewan apa yang diberikan kepada si botak agar ia menjadi kaya?", a: "A. Kambing", b: "B. Sapi yang sedang bunting", c: "C. Gajah", d: "D. Ikan di kolam", correct: "B" },
-    { q: "11. Berapa banyak harta yang diberikan kepada si buta?", a: "A. Unta yang sangat banyak", b: "B. Sapi yang besar", c: "C. Kambing yang sedang bunting", d: "D. Kebun kurma", correct: "C" },
-    { q: "12. Setelah beberapa tahun, bagaimana keadaan ekonomi ketiga orang tersebut?", a: "A. Tetap miskin", b: "B. Menjadi sangat kaya raya", c: "C. Menjadi pedagang di luar negeri", d: "D. Hartanya habis dicuri", correct: "B" },
-    { q: "13. Malaikat datang kembali kepada mereka untuk menguji apa?", a: "A. Kekuatan fisik mereka", b: "B. Kepintaran mereka", c: "C. Kesyukuran dan kejujuran mereka", d: "D. Kecepatan mereka berlari", correct: "C" },
-    { q: "14. Malaikat menyamar menjadi apa saat mendatangi mereka kembali?", a: "A. Menjadi raja yang perkasa", b: "B. Menjadi pengemis yang memiliki kekurangan seperti mereka dulu", c: "C. Menjadi pedagang hewan", d: "D. Menjadi anak kecil", correct: "B" },
-    { q: "15. Apa alasan si kusta saat menolak membantu pengemis yang datang?", a: "A. Dia bilang sedang tidak punya uang", b: "B. Dia bilang hartanya adalah warisan dari ayahnya", c: "C. Dia bilang tidaknya sedang sakit", d: "D. Dia bilang tidak mengenal pengemis itu", correct: "B" },
-    { q: "16. Sikap apa yang ditunjukkan si kusta dan si botak terhadap pengemis?", a: "A. Sangat ramah dan baik", b: "B. Sombong dan kikir (pelit)", c: "C. setengah Memberikan hartanya", d: "D. Mengajak pengemis makan bersama", correct: "B" },
-    { q: "17. Siapa satu-satunya orang yang mengakui bahwa hartanya adalah pemberian Allah?", a: "A. Si mantan kusta", b: "B. Si mantan botak", c: "C. Si mantan buta", d: "D. Semua orang mengakui", correct: "C" },
-    { q: "18. Apa yang ditawarkan si buta kepada pengemis yang mendatangi rumahnya?", a: "A. Menyyuruh pengemis pergi", b: "B. Memberikan roti sisa", c: "C. Mempersilakan mengambil harta sebanyak yang dibutuhkan", d: "D. Memberikan satu koin perak", correct: "C" },
-    { q: "19. Mengapa si buta sangat dermawan kepada pengemis tersebut?", a: "A. Karena dia punya terlalu banyak uang", b: "B. Karena dia ingat dulu dia juga susah dan Allah yang menolongnya", c: "C. Karena dia ingin dipuji orang lain", d: "D. Karena dia takut pada pengemis itu", correct: "B" },
-    { q: "20. Apa yang dikatakan malaikat kepada si kusta yang berbohong?", a: "A. 'Semoga hartamu makin banyak'", b: "B. 'Jika kamu berdusta, semoga Allah mengembalikanmu ke kondisi semula'", c: "C. 'Kamu orang yang sangat rajin'", d: "D. 'Terima kasih atas bantuannya'", correct: "B" },
-    { q: "21. Apa yang terjadi pada hewan ternak si kusta dan si botak di akhir cerita?", a: "A. Dijual untuk membangun istana", b: "B. Semuanya mati dan musnah karena mereka kufur", c: "C. Bertambah semakin banyak", d: "D. Diberikan kepada warga desa", correct: "B" },
-    { q: "22. Kondisi fisik apa yang kembali dialami si kusta dan si botak?", a: "A. Menjadi semakin sehat", b: "B. Kembali menjadi sakit dan kekurangan seperti dulu", c: "C. Menjadi lebih kuat", d: "D. Tidak terjadi apa-apa", correct: "B" },
-    { q: "23. Apa arti dari sifat 'Kufur Nikmat'?", a: "A. Selalu berbagi dengan teman", b: "B. Tidak mengakui dan tidak bersyukur atas pemberian Allah", c: "C. Suka membantu orang sakit", d: "D. Rajin beribadah di masjid", correct: "B" },
-    { q: "24. Bagaimana akhir kisah si buta yang pandai bersyukur?", a: "A. Hartanya habis karena diberikan orang", b: "B. Dia menjadi sedih kembali", c: "C. Allah rida kepadanya dan tetap menjaga kenikmatan-Nya", d: "D. Dia pergi meninggalkan desanya", correct: "C" },
-    { q: "25. Mengapa kita tidak boleh sombong dengan kelebihan yang kita miliki?", a: "A. Karena kelebihan itu adalah titipan dan ujian dari Allah", b: "B. Karena orang lain akan iri", c: "C. Karena nanti kita akan lelah", d: "D. Karena sombong itu melelahkan", correct: "A" },
-    { q: "26. Apa yang harus kita ucapkan saat mendapatkan nikmat dari Allah?", a: "A. Subhanallah", b: "B. Alhamdulillah", c: "C. Astagfirullah", d: "D. Allahu Akbar", correct: "B" },
-    { q: "27. Sesuai isi video, siapa sebenarnya yang memberikan kesembuhan bagi manusia?", a: "A. Malaikat Sendiri", b: "B. Harta yang banyak", c: "C. Allah SWT", d: "D. Tabib yang pintar", correct: "C" },
-    { q: "28. Dalam Surah Ibrahim ayat 7, apa janji Allah jika kita bersyukur?", a: "A. Allah akan mengurangi beban kita", b: "B. Allah akan menambah kenikmatan-Nya kepada kita", c: "C. Allah akan menjadikan kita raja", d: "D. Allah akan memberi kita banyak mainan", correct: "B" },
-    { q: "29. Apa ancaman Allah dalam Surat Ibrahim ayat 7 bagi orang yang kufur?", a: "A. Tidak akan punya teman", b: "B. Azab Allah sangat pedih", c: "C. Akan ketakutan terus", d: "D. Tidak ada ancaman", correct: "B" },
-    { q: "30. Apa pelajaran paling utama yang bisa kita petik dari video tersebut?", a: "A. Menjadi kaya itu harus dengan kerja keras saja", b: "B. Kita harus selalu bersyukur dalam keadaan sulit maupun senang", c: "C. Tidak perlu berobat jika sedang sakit", d: "D. Memelihara hewan itu sangat sulit", correct: "B" }
-  ];
-
-  // ========== STATE ==========
-  let currentIndex = 0;
-  let scoreLeft = 0, scoreRight = 0;
-  let lock = false; // kunci saat pergantian soal
-
-  // elemen DOM
-  const leftQ = document.getElementById('leftQuestion');
-  const rightQ = document.getElementById('rightQuestion');
-  const leftOpt = document.getElementById('leftOptions');
-  const rightOpt = document.getElementById('rightOptions');
-  const leftFeed = document.getElementById('leftFeedback');
-  const rightFeed = document.getElementById('rightFeedback');
-  const leftBtn = document.getElementById('leftAnswerBtn');
-  const rightBtn = document.getElementById('rightAnswerBtn');
-  const globalNotif = document.getElementById('globalNotif');
-  const scoreLeftCircle = document.getElementById('scoreLeftCircle');
-  const scoreRightCircle = document.getElementById('scoreRightCircle');
-
-  function updateScoresUI() {
-    scoreLeftCircle.innerText = scoreLeft;
-    scoreRightCircle.innerText = scoreRight;
-  }
-
-  // reset pilihan di kedua tim
-  function resetSelections() {
-    document.querySelectorAll('input[type="radio"]').forEach(r => r.checked = false);
-    document.querySelectorAll('.option-item').forEach(opt => opt.classList.remove('selected'));
-  }
-
-  // nonaktifkan/aktifkan tombol jawab dan radio
-  function setButtonsEnabled(enabled) {
-    leftBtn.disabled = !enabled;
-    rightBtn.disabled = !enabled;
-    if (!enabled) {
-      leftOpt.style.pointerEvents = 'none';
-      rightOpt.style.pointerEvents = 'none';
-    } else {
-      leftOpt.style.pointerEvents = 'auto';
-      rightOpt.style.pointerEvents = 'auto';
-    }
-  }
-
-  // memuat soal ke kedua box
-  function loadQuestionToBoxes(index) {
-    if (index >= questions.length) {
-      leftQ.innerText = '🏁 SELESAI 🏁';
-      rightQ.innerText = '🏁 SELESAI 🏁';
-      leftOpt.innerHTML = '';
-      rightOpt.innerHTML = '';
-      setButtonsEnabled(false);
-      globalNotif.innerText = 'Alhamdulillah, kuis telah usai!';
-      return;
-    }
-    const soal = questions[index];
-    leftQ.innerText = soal.q;
-    rightQ.innerText = soal.q;
-
-    const letters = ['A', 'B', 'C', 'D'];
-    const opts = [soal.a, soal.b, soal.c, soal.d];
-    let htmlLeft = '', htmlRight = '';
-    opts.forEach((text, i) => {
-      htmlLeft += `<label class="option-item" data-opt="${letters[i]}">
-        <input type="radio" name="leftOpt" value="${letters[i]}"> ${text}
-      </label>`;
-      htmlRight += `<label class="option-item" data-opt="${letters[i]}">
-        <input type="radio" name="rightOpt" value="${letters[i]}"> ${text}
-      </label>`;
-    });
-    leftOpt.innerHTML = htmlLeft;
-    rightOpt.innerHTML = htmlRight;
-
-    // event listener untuk visual selected
-    document.querySelectorAll('#leftOptions .option-item').forEach(opt => {
-      opt.addEventListener('click', function(e) {
-        if (lock) return;
-        document.querySelectorAll('#leftOptions .option-item').forEach(o => o.classList.remove('selected'));
-        this.classList.add('selected');
-        this.querySelector('input[type="radio"]').checked = true;
-      });
-    });
-    document.querySelectorAll('#rightOptions .option-item').forEach(opt => {
-      opt.addEventListener('click', function(e) {
-        if (lock) return;
-        document.querySelectorAll('#rightOptions .option-item').forEach(o => o.classList.remove('selected'));
-        this.classList.add('selected');
-        this.querySelector('input[type="radio"]').checked = true;
-      });
-    });
-
-    leftFeed.innerHTML = '';
-    rightFeed.innerHTML = '';
-    globalNotif.innerText = `Soal ${index+1} dari ${questions.length}`;
-    setButtonsEnabled(true);
-    lock = false;
-  }
-
-  // lanjut ke soal berikutnya
-  function nextQuestion() {
-    lock = true;
-    setButtonsEnabled(false);
-    currentIndex++;
-    if (currentIndex < questions.length) {
-      loadQuestionToBoxes(currentIndex);
-    } else {
-      loadQuestionToBoxes(currentIndex);
-    }
-  }
-
-  // menangani jawaban
-  async function handleAnswer(team) { // 'left' atau 'right'
-    if (lock) {
-      globalNotif.innerText = '⏳ Mohon tunggu, soal sedang berganti...';
-      return;
-    }
-    let feedbackEl = team === 'left' ? leftFeed : rightFeed;
-    let optContainer = team === 'left' ? leftOpt : rightOpt;
-    let selectedRadio = optContainer.querySelector('input[type="radio"]:checked');
-    if (!selectedRadio) {
-      feedbackEl.innerHTML = '❌ Pilih jawaban dulu!';
-      feedbackEl.classList.add('wrong-feedback');
-      feedbackEl.classList.remove('correct-feedback');
-      return;
-    }
-    let jawaban = selectedRadio.value;
-    let kunci = questions[currentIndex].correct;
-    let benar = (jawaban === kunci);
-
-    if (benar) {
-      if (team === 'left') {
-        scoreLeft++;
-        feedbackEl.innerHTML = '✅ BENAR! +1 Tim A';
-      } else {
-        scoreRight++;
-        feedbackEl.innerHTML = '✅ BENAR! +1 Tim B';
-      }
-      feedbackEl.classList.add('correct-feedback');
-      feedbackEl.classList.remove('wrong-feedback');
-      globalNotif.innerText = '🎉 Jawaban benar! Memuat soal berikutnya...';
-      updateScoresUI();
-
-      lock = true;
-      setButtonsEnabled(false);
-      setTimeout(() => {
-        nextQuestion();
-      }, 800);
-    } else {
-      feedbackEl.innerHTML = '❌ Salah, coba lagi!';
-      feedbackEl.classList.add('wrong-feedback');
-      feedbackEl.classList.remove('correct-feedback');
-      // reset pilihan di tim itu
-      optContainer.querySelectorAll('input[type="radio"]').forEach(r => r.checked = false);
-      optContainer.querySelectorAll('.option-item').forEach(o => o.classList.remove('selected'));
-      globalNotif.innerText = '💡 Jawaban belum tepat, semangat!';
-    }
-  }
-
-  // event listener tombol
-  leftBtn.addEventListener('click', () => handleAnswer('left'));
-  rightBtn.addEventListener('click', () => handleAnswer('right'));
-
-  // inisialisasi
-  loadQuestionToBoxes(0);
-  updateScoresUI();
-</script>
+    
+    <!-- html2canvas -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    
+    <script>
+        (function() {
+            // Audio setup
+            const audio = document.getElementById('bgMusic');
+            const musicControl = document.getElementById('musicControl');
+            const musicStatus = document.getElementById('musicStatus');
+            
+            // Cek apakah browser mendukung autoplay
+            audio.volume = 0.5;
+            
+            // Handle autoplay policy (browser sometimes blocks autoplay)
+            const playPromise = audio.play();
+            if (playPromise !== undefined) {
+                playPromise.catch(error => {
+                    console.log("Autoplay blocked, waiting for user interaction");
+                    musicStatus.textContent = 'Muted';
+                    musicControl.classList.remove('playing');
+                });
+            }
+            
+            // Music control toggle
+            musicControl.addEventListener('click', function() {
+                if (audio.paused) {
+                    audio.play();
+                    musicStatus.textContent = 'Playing';
+                    musicControl.classList.add('playing');
+                } else {
+                    audio.pause();
+                    musicStatus.textContent = 'Paused';
+                    musicControl.classList.remove('playing');
+                }
+            });
+            
+            // Elemen
+            const coverPage = document.getElementById('coverPage');
+            const mainPage = document.getElementById('mainPage');
+            const bukaBtn = document.getElementById('bukaUndanganBtn');
+            const backBtn = document.getElementById('backToCoverBtn');
+            const coverBg = document.getElementById('coverBg');
+            const mainBg = document.getElementById('mainBg');
+            
+            // Input
+            const namaInput = document.getElementById('nama');
+            const alamatInput = document.getElementById('alamat');
+            const guestNameSpan = document.getElementById('guestNameDisplay');
+            const guestCitySpan = document.getElementById('guestCityDisplay');
+            const invitedGuestName = document.getElementById('invitedGuestName');
+            
+            // Untuk halaman 3
+            const guestNameSpan3 = document.getElementById('guestNameDisplay3');
+            const guestCitySpan3 = document.getElementById('guestCityDisplay3');
+            const invitedGuestName3 = document.getElementById('invitedGuestName3');
+            
+            // Navigasi
+            const pageOne = document.getElementById('pageOne');
+            const pageTwo = document.getElementById('pageTwo');
+            const pageThree = document.getElementById('pageThree');
+            const prevBtn = document.getElementById('prevPageBtn');
+            const nextBtn = document.getElementById('nextPageBtn');
+            const pageDots = document.querySelectorAll('.page-dot');
+            const pageNumberDisplay = document.getElementById('pageNumberDisplay');
+            const togglePageBtn = document.getElementById('togglePageBtn');
+            const togglePageText = document.getElementById('togglePageText');
+            
+            // Download
+            const downloadBtn = document.getElementById('downloadCurrentPage');
+            
+            // Logo
+            const designerLogo = document.getElementById('designerLogo');
+            
+            let currentMainPage = 1;
+            
+            // Fungsi update semua elemen nama
+            function updateNamaTamu() {
+                const nama = namaInput.value.trim() || 'Tamu Undangan';
+                const alamat = alamatInput.value.trim() || 'Indonesia';
+                
+                guestNameSpan.textContent = nama;
+                guestCitySpan.textContent = alamat;
+                invitedGuestName.textContent = nama;
+                
+                if (guestNameSpan3) guestNameSpan3.textContent = nama;
+                if (guestCitySpan3) guestCitySpan3.textContent = alamat;
+                if (invitedGuestName3) invitedGuestName3.textContent = nama;
+            }
+            
+            function showLoading() {
+                const overlay = document.createElement('div');
+                overlay.className = 'download-overlay';
+                overlay.id = 'downloadOverlay';
+                overlay.innerHTML = `
+                    <div class="loading-spinner">
+                        <i class="fas fa-spinner fa-spin"></i>
+                        <h3>Memproses gambar...</h3>
+                        <p>Mohon tunggu sebentar</p>
+                    </div>
+                `;
+                document.body.appendChild(overlay);
+            }
+            
+            function hideLoading() {
+                const overlay = document.getElementById('downloadOverlay');
+                if (overlay) {
+                    overlay.remove();
+                }
+            }
+            
+            function openInvitation() {
+                if (!namaInput.value.trim() || !alamatInput.value.trim()) {
+                    alert('Mohon isi nama dan alamat Anda terlebih dahulu');
+                    return;
+                }
+                
+                updateNamaTamu();
+                
+                coverBg.style.display = 'none';
+                mainBg.style.display = 'block';
+                
+                coverPage.style.display = 'none';
+                mainPage.classList.add('active');
+                backBtn.classList.add('active');
+                togglePageBtn.classList.add('active');
+                
+                showMainPage(1);
+            }
+            
+            function backToCover() {
+                coverBg.style.display = 'block';
+                mainBg.style.display = 'none';
+                
+                coverPage.style.display = 'flex';
+                mainPage.classList.remove('active');
+                backBtn.classList.remove('active');
+                togglePageBtn.classList.remove('active');
+            }
+            
+            function showMainPage(page) {
+                currentMainPage = page;
+                
+                pageOne.style.display = 'none';
+                pageTwo.style.display = 'none';
+                pageThree.style.display = 'none';
+                
+                if (page === 1) {
+                    pageOne.style.display = 'block';
+                    prevBtn.disabled = true;
+                    nextBtn.disabled = false;
+                    pageNumberDisplay.textContent = 'Halaman 1';
+                    togglePageText.textContent = 'Halaman 2';
+                } else if (page === 2) {
+                    pageTwo.style.display = 'block';
+                    prevBtn.disabled = false;
+                    nextBtn.disabled = false;
+                    pageNumberDisplay.textContent = 'Halaman 2';
+                    togglePageText.textContent = 'Halaman 3';
+                } else if (page === 3) {
+                    pageThree.style.display = 'block';
+                    prevBtn.disabled = false;
+                    nextBtn.disabled = true;
+                    pageNumberDisplay.textContent = 'Halaman 3 (Buku)';
+                    togglePageText.textContent = 'Halaman 1';
+                }
+                
+                pageDots.forEach((dot, index) => {
+                    if (index + 1 === page) {
+                        dot.classList.add('active');
+                    } else {
+                        dot.classList.remove('active');
+                    }
+                });
+            }
+            
+            // Event listeners
+            bukaBtn.addEventListener('click', openInvitation);
+            backBtn.addEventListener('click', backToCover);
+            
+            prevBtn.addEventListener('click', function() {
+                if (currentMainPage > 1) {
+                    showMainPage(currentMainPage - 1);
+                }
+            });
+            
+            nextBtn.addEventListener('click', function() {
+                if (currentMainPage < 3) {
+                    showMainPage(currentMainPage + 1);
+                }
+            });
+            
+            togglePageBtn.addEventListener('click', function() {
+                if (currentMainPage < 3) {
+                    showMainPage(currentMainPage + 1);
+                } else {
+                    showMainPage(1);
+                }
+            });
+            
+            pageDots.forEach((dot) => {
+                dot.addEventListener('click', function() {
+                    const page = parseInt(this.getAttribute('data-page'));
+                    showMainPage(page);
+                });
+            });
+            
+            alamatInput.addEventListener('keypress', function(e) {
+                if (e.key === 'Enter') openInvitation();
+            });
+            
+            namaInput.addEventListener('input', updateNamaTamu);
+            alamatInput.addEventListener('input', updateNamaTamu);
+            
+            designerLogo.addEventListener('click', function() {
+                const email = 'ariefraihan.424@gmail.com';
+                const wa = '085641812827';
+                
+                const pilihan = confirm('Hubungi desainer melalui:\n- Email: ' + email + '\n- WhatsApp: ' + wa + '\n\nKlik OK untuk Email, Cancel untuk WhatsApp');
+                
+                if (pilihan) {
+                    window.location.href = 'mailto:' + email;
+                } else {
+                    window.open('https://wa.me/' + wa, '_blank');
+                }
+            });
+            
+            // FUNGSI UNDUH YANG DIPERBAIKI
+            downloadBtn.addEventListener('click', async function() {
+                if (!namaInput.value.trim() || !alamatInput.value.trim()) {
+                    alert('Mohon isi nama dan alamat Anda terlebih dahulu');
+                    return;
+                }
+                
+                updateNamaTamu();
+                
+                // Update halaman 3
+                if (guestNameSpan3) guestNameSpan3.textContent = guestNameSpan.textContent;
+                if (guestCitySpan3) guestCitySpan3.textContent = guestCitySpan.textContent;
+                if (invitedGuestName3) invitedGuestName3.textContent = invitedGuestName.textContent;
+                
+                // ELEMEN YANG DIUNDUH: mainPage (konten) + background sudah termasuk karena mainBg terpisah
+                // Tapi kita perlu menangkap wrapper agar background ikut
+                const elementToCapture = document.querySelector('.invitation-wrapper');
+                
+                showLoading();
+                
+                // Elemen yang perlu disembunyikan
+                const navButtons = document.querySelectorAll('.nav-button');
+                const pageIndicator = document.querySelector('.page-indicator');
+                const mainNav = document.querySelector('.main-nav');
+                const downloadIndicator = document.querySelectorAll('.download-indicator');
+                const designerLogoEl = document.querySelector('.designer-logo');
+                const footerNote = document.querySelector('.footer-note');
+                const musicBtn = document.getElementById('musicControl');
+                
+                try {
+                    // Sembunyikan elemen
+                    navButtons.forEach(btn => btn.style.visibility = 'hidden');
+                    if (mainNav) mainNav.style.display = 'none';
+                    if (pageIndicator) pageIndicator.style.display = 'none';
+                    if (designerLogoEl) designerLogoEl.style.display = 'none';
+                    if (footerNote) footerNote.style.display = 'none';
+                    if (musicBtn) musicBtn.style.display = 'none';
+                    downloadIndicator.forEach(ind => ind.style.display = 'none');
+                    
+                    // Pastikan background terlihat
+                    mainBg.style.display = 'block';
+                    
+                    // Tunggu DOM update
+                    await new Promise(resolve => setTimeout(resolve, 500));
+                    
+                    // Capture dengan opsi yang lebih baik
+                    const canvas = await html2canvas(elementToCapture, {
+                        scale: 2,
+                        backgroundColor: '#2f2319',
+                        allowTaint: false,
+                        useCORS: true,
+                        logging: false,
+                        windowWidth: 600,
+                        onclone: function(clonedDoc) {
+                            // Clone juga harus menyembunyikan elemen yang sama
+                            const clonedNav = clonedDoc.querySelectorAll('.nav-button');
+                            clonedNav.forEach(btn => btn.style.visibility = 'hidden');
+                            
+                            const clonedMainNav = clonedDoc.querySelector('.main-nav');
+                            if (clonedMainNav) clonedMainNav.style.display = 'none';
+                            
+                            const clonedPageIndicator = clonedDoc.querySelector('.page-indicator');
+                            if (clonedPageIndicator) clonedPageIndicator.style.display = 'none';
+                            
+                            const clonedDesignerLogo = clonedDoc.querySelector('.designer-logo');
+                            if (clonedDesignerLogo) clonedDesignerLogo.style.display = 'none';
+                            
+                            const clonedFooterNote = clonedDoc.querySelector('.footer-note');
+                            if (clonedFooterNote) clonedFooterNote.style.display = 'none';
+                            
+                            const clonedMusicBtn = clonedDoc.getElementById('musicControl');
+                            if (clonedMusicBtn) clonedMusicBtn.style.display = 'none';
+                            
+                            const clonedDownloadIndicator = clonedDoc.querySelectorAll('.download-indicator');
+                            clonedDownloadIndicator.forEach(ind => ind.style.display = 'none');
+                        }
+                    });
+                    
+                    // Kembalikan tampilan
+                    navButtons.forEach(btn => {
+                        if (btn.classList.contains('active')) btn.style.visibility = 'visible';
+                    });
+                    if (mainNav) mainNav.style.display = 'flex';
+                    if (pageIndicator) pageIndicator.style.display = 'flex';
+                    if (designerLogoEl) designerLogoEl.style.display = 'flex';
+                    if (footerNote) footerNote.style.display = 'block';
+                    if (musicBtn) musicBtn.style.display = 'flex';
+                    downloadIndicator.forEach(ind => ind.style.display = 'block');
+                    
+                    // Download sebagai PNG dengan kualitas tinggi
+                    const link = document.createElement('a');
+                    const fileName = `undangan-azmi-rizky-${namaInput.value.trim().replace(/\s+/g, '-')}.png`;
+                    link.download = fileName;
+                    
+                    // Konversi ke blob untuk menghindari korupsi
+                    canvas.toBlob(function(blob) {
+                        if (blob) {
+                            link.href = URL.createObjectURL(blob);
+                            link.click();
+                            setTimeout(() => URL.revokeObjectURL(link.href), 100);
+                        } else {
+                            // Fallback
+                            link.href = canvas.toDataURL('image/png');
+                            link.click();
+                        }
+                    }, 'image/png', 1.0);
+                    
+                } catch (error) {
+                    console.error('Download error:', error);
+                    alert('Gagal mengunduh. Silakan coba lagi.');
+                    
+                    // Kembalikan tampilan
+                    navButtons.forEach(btn => {
+                        if (btn.classList.contains('active')) btn.style.visibility = 'visible';
+                    });
+                    if (mainNav) mainNav.style.display = 'flex';
+                    if (pageIndicator) pageIndicator.style.display = 'flex';
+                    if (designerLogoEl) designerLogoEl.style.display = 'flex';
+                    if (footerNote) footerNote.style.display = 'block';
+                    if (musicBtn) musicBtn.style.display = 'flex';
+                    downloadIndicator.forEach(ind => ind.style.display = 'block');
+                } finally {
+                    hideLoading();
+                }
+            });
+            
+            updateNamaTamu();
+        })();
+    </script>
 </body>
 </html>
